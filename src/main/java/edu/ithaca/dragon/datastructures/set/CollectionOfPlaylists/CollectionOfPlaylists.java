@@ -29,14 +29,26 @@ public interface CollectionOfPlaylists {
     /**
      * @param playlistName - valid name for a playlist
      * @post create an empty playlist using the playlistName
+     * @throws InstanceAlreadyExistsException if playlist name is already used
      */
     void createPlaylist(String playlistName);
 
     /**
      * @param song - valid name of song
      * @param artist - valid name of artist
-     * @post remove the specific song
+     * @post remove the specific song from all playlists
      * @throws NotFoundException if the item does not exist
      */
     void removeSong(String song, String artist);
+
+    /**
+     * @param playlistName - valid name for a playlist
+     * @param seconds - length of time for the playlist (no more no less)
+     * @post create a playlist with the playlist name
+     * @post randomly add songs to the playlist to make it the exact time specified by the seconds
+     * @throws InstanceAlreadyExistsException if playlist name is already used
+     * @throws IllegalArgumentException if seconds is less than 10
+     */
+    void createRandomPlaylist(String playlistName, long seconds);
+
 }
