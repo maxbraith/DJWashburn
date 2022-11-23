@@ -33,4 +33,10 @@ public class SongList implements Song{
     public int getNumTimesPlayed(){
         return numTimesPlayed;
     }
+
+    @Override
+    public boolean equals(String songTitle, String artist) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 }
