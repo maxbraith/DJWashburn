@@ -1,4 +1,4 @@
-package edu.ithaca.dragon.datastructures.set;
+package edu.ithaca.dragon.datastructures.set.Song;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -11,7 +11,7 @@ import edu.ithaca.dragon.datastructures.set.Song.SongList;
 public class SongTest {
 
     @Test
-    public void numTimesPlayedAndGetTest(){
+    public void numTimesPlayedandGetTest(){
         Song testSong = new SongList("testArtist", "testTitle", 100, 0);
         testSong.updateNumTimesPlayed();
         testSong.updateNumTimesPlayed();
