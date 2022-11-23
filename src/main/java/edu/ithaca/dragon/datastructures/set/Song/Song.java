@@ -6,9 +6,10 @@ public interface Song {
 
     public String getSongTitle();
 
-    public int durationSeconds();
+    public int getDurationSeconds();
 
     public int getNumTimesPlayed();
 
+    public void updateNumTimesPlayed();
 
 }
