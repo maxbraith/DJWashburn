@@ -1,70 +1,41 @@
 package edu.ithaca.dragon.datastructures.set.Library;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import edu.ithaca.dragon.datastructures.set.CollectionOfPlaylists.CollectionOfPlaylists;
 import edu.ithaca.dragon.datastructures.set.Song.Song;
 
 public interface Library {
 
     /**
-     * @return a list of songs in alphabetical order contained within the library (artist first), or null if playlist is empty
+     * @return a list of songs in alphabetical order contained within the library (artist first)
      */
-    public String getAllSongs();
+    String songs();
 
     /**
-     * @return artist of specified song
-     * @pre has to be a valid song
-     * @throws NullPointerException if song is not valid 
-     * @param song to get artist from
+     * @param song - a string of a valid song title
+     * @param artist - a string of a valid artist
+     * @post find a specific song's information
+     * @return the information found
      */
-    public String getArtist(Song song);
-
-    /**
-     * @return song title of specified song
-     * @pre has to be a valid song
-     * @throws NullPointerException if song is not valid 
-     * @param song to get artist from
-     */
-    public String getSongTitle(Song song);
-
-    /**
-     * @return duration of specified song
-     * @pre has to be a valid song
-     * @throws NullPointerException if song is not valid 
-     * @param song to get artist from
-     */
-    public int getDurationSeconds(Song song);
-
-    /**
-     * @return number of times played of specified song
-     * @pre has to be a valid song
-     * @throws NullPointerException if song is not valid 
-     * @param song to get artist from
-     */
-    public int getNumTimesPlayed(Song song);
+    Song songSearch(String song, String artist);
 
     /**
      * @param listOfSongs - a list of songs
      * @post add this list of songs to the library
      */
-    public void addSongs(ArrayList<Song> songs);
+    void addSongs(List listOfSongs);
 
     /**
      * @param listOfSongs - a list of songs
      * @post remove this list of songs from the library AND any playlist in which they occur
      */
-    public void removeSongs(ArrayList<Song> songs);
+    void removeSongs(List listOfSongs);
 
     /**
-     * @pre index has to be within the size of the library's size
-     * @param index to get a song at the index in the library
-     * @throws NotFoundException if index is null
-     * @return song from library
+     * @return the collection of playlists within the library
      */
-    public Song getSongFromList(int index);
-
-    /**
-     * @return size of library
-     */
-    public int getListSize();
+    CollectionOfPlaylists getPlaylists();
 
 }

@@ -5,7 +5,7 @@ import java.util.Collections;
 import edu.ithaca.dragon.datastructures.set.Song.Song;
 import edu.ithaca.dragon.datastructures.set.Song.SongList;
 
-public class LibraryList implements Library {
+public class LibraryList {
 
     private ArrayList<SongList> songList;
 

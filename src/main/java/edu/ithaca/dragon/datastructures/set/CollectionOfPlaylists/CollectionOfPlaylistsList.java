@@ -8,7 +8,7 @@ import edu.ithaca.dragon.datastructures.set.Playlist.Playlist;
 import edu.ithaca.dragon.datastructures.set.Playlist.PlaylistList;
 import edu.ithaca.dragon.datastructures.set.Song.Song;
 
-public class CollectionOfPlaylistsList implements CollectionOfPlaylists{
+public class CollectionOfPlaylistsList {
 
     private ArrayList<Playlist> playlists;
 
@@ -39,7 +39,7 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists{
 
     public void removePlaylist(String name){
         for (int i=0; i<playlists.size(); i++){
-            if (playlists.get(i).getName().equals(name)){
+            if (playlists.get(i).equals(name)){
                 playlists.remove(i);
             }
         }

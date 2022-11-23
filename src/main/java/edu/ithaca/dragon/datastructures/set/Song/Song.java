@@ -1,15 +1,18 @@
 package edu.ithaca.dragon.datastructures.set.Song;
 
 public interface Song {
+    //Giovanni created the names, Griffin made the comments
 
-    public String getArtist();
+    String getArtist();
 
-    public String getSongTitle();
+    String getSongTitle();
 
-    public int getDurationSeconds();
+    int getDurationSeconds();
 
-    public int getNumTimesPlayed();
+    int getNumTimesPlayed();
 
-    public void updateNumTimesPlayed();
+    void updateNumTimesPlayed();
+
+    boolean equals(String songTitle, String artist);
 
 }
