@@ -23,47 +23,35 @@ public interface Playlist {
     public String getAllSongs();
 
     /**
-     * @pre 
-     * @param
-     * @post
-     * @throws
-     * @return
+     * @return duration of playlist
      */
     public int returnDurationSeconds();
 
     /**
-     * @pre 
-     * @param
-     * @post
-     * @throws
-     * @return
+     * @post updates duration seconds and removes song playing next from playlist
+     * @throws NullPointerException if index is null
+     * @return information about song that is playing next
      */
     public String playNext();
 
     /**
-     * @pre 
-     * @param
-     * @post
-     * @throws
-     * @return
+     * @return true or false whether playlist is empty or not
      */
     public boolean checkEmpty();
 
     /**
-     * @pre 
-     * @param
-     * @post
-     * @throws
-     * @return
+     * @pre song must be valid
+     * @param song to add to playlist
+     * @post adds song to playlist
+     * @throws Exception if song is not valid
      */
     public void addSong(Song song);
 
     /**
-     * @pre 
-     * @param
-     * @post
-     * @throws
-     * @return
+     * @pre song must be valid
+     * @param song to check if is in the playlist
+     * @throws Exception if song is not valid
+     * @return true or false based on whether or not song is in the playlist
      */
     public boolean contains(Song songToCheck);
 }
