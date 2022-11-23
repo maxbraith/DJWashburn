@@ -1,38 +1,37 @@
 package edu.ithaca.dragon.datastructures.set.Library;
 
-import edu.ithaca.dragon.datastructures.set.CollectionOfPlaylists.CollectionOfPlaylists;
+import java.util.ArrayList;
 import edu.ithaca.dragon.datastructures.set.Song.Song;
 
-import java.util.List;
-
 public interface Library {
+
     /**
      * @return a list of songs in alphabetical order contained within the library (artist first)
      */
-    String songs();
+    public String getAllSongs();
 
-    /**
-     * @param song - a string of a valid song title
-     * @param artist - a string of a valid artist
-     * @post find a specific song's information
-     * @return the information found
-     */
-    Song songSearch(String song, String artist);
+    public String getArtist(Song song);
 
-    /**
+    public String getSongTitle(Song song);
+
+    public int getDurationSeconds(Song song);
+
+    public int getNumTimesPlayed(Song song);
+
+     /**
      * @param listOfSongs - a list of songs
      * @post add this list of songs to the library
      */
-    void addSongs(List listOfSongs);
+    public void addSongs(ArrayList<Song> songs);
 
     /**
      * @param listOfSongs - a list of songs
      * @post remove this list of songs from the library AND any playlist in which they occur
      */
-    void removeSongs(List listOfSongs);
+    public void removeSongs(ArrayList<Song> songs);
 
-    /**
-     * @return the collection of playlists within the library
-     */
-    CollectionOfPlaylists getPlaylists();
+    public Song getSongFromList(int index);
+
+    public int getListSize();
+
 }
