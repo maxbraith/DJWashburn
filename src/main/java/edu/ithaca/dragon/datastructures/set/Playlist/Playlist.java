@@ -5,11 +5,6 @@ import edu.ithaca.dragon.datastructures.set.Song.Song;
 public interface Playlist {
 
     /**
-     * @return name of playlist
-     */
-    public String getName();
-
-    /**
      * @pre song has to be valid
      * @param song song to remove
      * @post removes song from playlist
