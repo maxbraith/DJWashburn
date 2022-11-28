@@ -5,7 +5,7 @@ import java.util.Collections;
 import edu.ithaca.dragon.datastructures.set.Song.Song;
 import edu.ithaca.dragon.datastructures.set.Song.SongList;
 
-public class LibraryList {
+public class LibraryList implements Library{
 
     private ArrayList<SongList> songList;
 
@@ -62,4 +62,11 @@ public class LibraryList {
         return songList.size();
     }
 
+    public Song songSearch(String songTitle, String artist){
+        for (int i=0; i<songList.size(); i++){
+            if ((songList.get(i).getArtist().equals(artist))&&(songList.get(i).getSongTitle().equals(songTitle))){
+                return (Song)songList.get(i);
+            }
+        }
+    }
 }

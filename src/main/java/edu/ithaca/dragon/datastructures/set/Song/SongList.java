@@ -34,9 +34,12 @@ public class SongList implements Song{
         return numTimesPlayed;
     }
 
-    @Override
-    public boolean equals(String songTitle, String artist) {
-        // TODO Auto-generated method stub
-        return false;
+    public boolean equals(String songTitle, String artist){
+        if (this.songTitle.equals(songTitle) && this.getArtist().equals(artist)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
