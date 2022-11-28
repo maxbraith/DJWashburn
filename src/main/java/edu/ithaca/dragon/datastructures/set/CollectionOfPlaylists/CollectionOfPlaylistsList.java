@@ -8,7 +8,7 @@ import edu.ithaca.dragon.datastructures.set.Playlist.Playlist;
 import edu.ithaca.dragon.datastructures.set.Playlist.PlaylistList;
 import edu.ithaca.dragon.datastructures.set.Song.Song;
 
-public class CollectionOfPlaylistsList {
+public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
 
     private ArrayList<Playlist> playlists;
 
@@ -22,7 +22,7 @@ public class CollectionOfPlaylistsList {
         }
     }
 
-    public void createPlaylist(int requestedDurationSeconds, String name, Library library){
+    public void createRandomPlaylist(int requestedDurationSeconds, String name, Library library){
         Random rand = new Random();
         Playlist playlistToCreate = new PlaylistList(name);
         while (playlistToCreate.returnDurationSeconds()<=requestedDurationSeconds){

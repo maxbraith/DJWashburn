@@ -25,13 +25,13 @@ public interface Library {
      * @param listOfSongs - a list of songs
      * @post add this list of songs to the library
      */
-    void addSongs(List listOfSongs);
+    void addSongs(ArrayList<Song> listOfSongs);
 
     /**
      * @param listOfSongs - a list of songs
      * @post remove this list of songs from the library AND any playlist in which they occur
      */
-    void removeSongs(List listOfSongs);
+    void removeSongs(ArrayList<Song> listOfSongs);
 
     /**
      * @return the collection of playlists within the library
