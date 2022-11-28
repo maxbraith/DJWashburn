@@ -33,4 +33,13 @@ public class SongList implements Song{
     public int getNumTimesPlayed(){
         return numTimesPlayed;
     }
+
+    public boolean equals(String songTitle, String artist){
+        if (this.songTitle.equals(songTitle) && this.getArtist().equals(artist)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
