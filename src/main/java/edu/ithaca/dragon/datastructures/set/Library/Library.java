@@ -38,4 +38,8 @@ public interface Library {
      */
     CollectionOfPlaylists getPlaylists();
 
+    int getListSize();
+
+    Song getSongFromList(int randIndex);
+
 }
