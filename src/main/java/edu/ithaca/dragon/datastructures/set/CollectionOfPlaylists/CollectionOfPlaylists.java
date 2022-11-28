@@ -4,7 +4,6 @@ import edu.ithaca.dragon.datastructures.set.Library.Library;
 import edu.ithaca.dragon.datastructures.set.Song.Song;
 
 public interface CollectionOfPlaylists {
-    //Implemented by Giovanni
     /**
      * @param song - valid name of song
      * @param artist - valid name of artist

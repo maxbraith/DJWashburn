@@ -1,6 +1,6 @@
 package edu.ithaca.dragon.datastructures.set.Song;
 
-public class SongList implements Song{
+public class SongList{
     
     String artist;
     String songTitle;
