@@ -3,6 +3,7 @@ package edu.ithaca.dragon.datastructures.set.Song;
 public interface Song {
 
     /**
+     * @return 
      * @post add 1 to the count of how many times the song has been played
      */
     void updateNumTimesPlayed();
@@ -20,4 +21,12 @@ public interface Song {
      * @return a string of info associated with the song including the artist, song title, and duration
      */
     String getInfo();
+
+    String getArtist();
+
+    String getSongTitle();
+
+    int getNumTimesPlayed();
+
+    int getDurationSeconds();
 }

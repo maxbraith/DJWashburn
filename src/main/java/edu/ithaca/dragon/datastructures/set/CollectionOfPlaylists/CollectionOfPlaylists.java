@@ -52,7 +52,9 @@ public interface CollectionOfPlaylists {
 
 
     /**
-     * @return a string of all playlist names and their durations within the collection
+     * need comments
      */
     String returnCollectionOfPlaylistsInfo();
+
+    int returnCollectionSize();
 }

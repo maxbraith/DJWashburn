@@ -42,4 +42,10 @@ public class SongList implements Song{
             return false;
         }
     }
+
+    @Override
+    public String getInfo() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

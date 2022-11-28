@@ -2,6 +2,8 @@ package edu.ithaca.dragon.datastructures.set.Library;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import edu.ithaca.dragon.datastructures.set.CollectionOfPlaylists.CollectionOfPlaylists;
 import edu.ithaca.dragon.datastructures.set.Song.Song;
 import edu.ithaca.dragon.datastructures.set.Song.SongList;
 
@@ -13,7 +15,7 @@ public class LibraryList implements Library{
         songList = new ArrayList<>();
     }
     
-    public String getAllSongs(){
+    public String songs(){
         ArrayList<String> allSongs = new ArrayList<>();
         String allSongsInString= "";
         for (int i =0; i<songList.size(); i++){
@@ -68,5 +70,12 @@ public class LibraryList implements Library{
                 return (Song)songList.get(i);
             }
         }
+        //Made me add this return to avoid void error
+        return null;
     }
+
+    public CollectionOfPlaylists getPlaylists(){
+        return null;
+    }
+
 }

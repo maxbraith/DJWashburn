@@ -16,7 +16,7 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
         playlists = new ArrayList<>();
     }
     
-    public void removeSongFromAllPlaylists(Song songToRemove){
+    public void removeSong(Song songToRemove){
         for (int i=0; i<playlists.size(); i++){
             playlists.get(i).removeSong(songToRemove);
         }
@@ -61,5 +61,9 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
             stringToReturn += playlists.get(i).getName() + playlists.get(i).returnDurationSeconds();
         }
         return stringToReturn;
+    }
+
+    public int returnCollectionSize(){
+        return playlists.size();
     }
 }

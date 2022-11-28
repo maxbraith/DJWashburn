@@ -49,4 +49,7 @@ public interface Playlist {
      * @return true or false based on whether or not song is in the playlist
      */
     public boolean contains(Song songToCheck);
+
+    public String getName();
+
 }
