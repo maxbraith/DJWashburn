@@ -3,17 +3,16 @@ package edu.ithaca.dragon.datastructures.set.Playlist;
 import java.util.ArrayList;
 
 import edu.ithaca.dragon.datastructures.set.Song.Song;
-import edu.ithaca.dragon.datastructures.set.Song.SongList;
 
 public class PlaylistList implements Playlist{
 
     String name;
-    ArrayList<SongList> songs;
+    ArrayList<Song> songs;
     int durationSeconds;
 
     public PlaylistList(String name){
         this.name = name;
-        songs = new ArrayList<SongList>();
+        songs = new ArrayList<Song>();
         durationSeconds = 0;
     }
     
@@ -22,9 +21,9 @@ public class PlaylistList implements Playlist{
     }
 
     public void removeSong(Song song){
-        removeSong1((SongList)song);
+        removeSong1((Song)song);
     }
-    public void removeSong1(SongList song){
+    public void removeSong1(Song song){
         songs.remove(song);
         durationSeconds-=song.getDurationSeconds();
     }
@@ -55,9 +54,9 @@ public class PlaylistList implements Playlist{
     }
 
     public void addSong(Song song){
-        addSong1((SongList)song);
+        addSong1((Song)song);
     }
-    public void addSong1(SongList song){
+    public void addSong1(Song song){
         songs.add(song);
         durationSeconds+=song.getDurationSeconds();
     }

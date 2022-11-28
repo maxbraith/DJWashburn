@@ -9,7 +9,7 @@ public class SongTest {
 
     @Test
     public void songInitializer() {
-        songTest(new SongList("David Guetta", "Where Them Girls At", 168, 0));
+        songTest(new Song("David Guetta", "Where Them Girls At", 168, 0));
     }
 
     public void songTest(Song test){

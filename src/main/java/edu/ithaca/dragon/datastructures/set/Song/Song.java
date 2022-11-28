@@ -1,33 +1,49 @@
 package edu.ithaca.dragon.datastructures.set.Song;
 
-public interface Song {
-    //This interface was probably not needed but we implemented it anyways to stay on the same page
+public class Song {
+    
+    String artist;
+    String songTitle;
+    int durationSeconds;
+    int numTimesPlayed;
 
-    /**
-     * @return 
-     * @post add 1 to the count of how many times the song has been played
-     */
-    void updateNumTimesPlayed();
+    public Song(String artist, String songTitle, int durationSeconds, int numTimesPlayed){
+        this.artist = artist;
+        this.songTitle = songTitle;
+        this.durationSeconds = durationSeconds;
+        this.numTimesPlayed = numTimesPlayed;
+    }
 
-    /**
-     * @param songTitle valid string of a song
-     * @param artist valid string of an artist
-     * @post check if the song titles and artists match
-     * @return false if the song titles and artists don't match
-     * @return true if the song titles and artists do match
-     */
-    boolean equals(String songTitle, String artist);
+    public boolean equals(String songTitle, String artist){
+        if (this.songTitle.equalsIgnoreCase(songTitle) && this.getArtist().equalsIgnoreCase(artist)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
-    /**
-     * @return a string of info associated with the song including the artist, song title, and duration
-     */
-    String getInfo();
+    public String getInfo() {
+        return "Artist: " + this.artist + "; Song Title: " + this.songTitle + "; Duration: " + this.durationSeconds + ";";
+    }
 
-    String getArtist();
+    public void updateNumTimesPlayed(){
+        numTimesPlayed++;
+    }
 
-    String getSongTitle();
+    public String getArtist(){
+        return artist;
+    }
 
-    int getNumTimesPlayed();
+    public String getSongTitle(){
+        return songTitle;
+    }
 
-    int getDurationSeconds();
+    public int getDurationSeconds(){
+        return durationSeconds;
+    }
+
+    public int getNumTimesPlayed(){
+        return numTimesPlayed;
+    }
 }

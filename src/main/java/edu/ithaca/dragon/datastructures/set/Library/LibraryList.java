@@ -5,11 +5,10 @@ import java.util.Collections;
 
 import edu.ithaca.dragon.datastructures.set.CollectionOfPlaylists.CollectionOfPlaylists;
 import edu.ithaca.dragon.datastructures.set.Song.Song;
-import edu.ithaca.dragon.datastructures.set.Song.SongList;
 
 public class LibraryList implements Library{
 
-    private ArrayList<SongList> songList;
+    private ArrayList<Song> songList;
 
     public LibraryList(){
         songList = new ArrayList<>();
@@ -46,7 +45,7 @@ public class LibraryList implements Library{
 
     public void addSongs(ArrayList<Song> songsToAddList){
         for (int i =0; i<songsToAddList.size(); i++){
-            songList.add((SongList)songsToAddList.get(i));
+            songList.add((Song)songsToAddList.get(i));
         }
     }
 
@@ -56,7 +55,7 @@ public class LibraryList implements Library{
         }
     }
 
-    public SongList getSongFromList(int index){
+    public Song getSongFromList(int index){
         return songList.get(index);
     }
 
