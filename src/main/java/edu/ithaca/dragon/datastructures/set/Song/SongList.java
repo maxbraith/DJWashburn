@@ -13,7 +13,22 @@ public class SongList implements Song{
         this.durationSeconds = durationSeconds;
         this.numTimesPlayed = numTimesPlayed;
     }
-    
+
+    @Override
+    public boolean equals(String songTitle, String artist){
+        if (this.songTitle.equalsIgnoreCase(songTitle) && this.getArtist().equalsIgnoreCase(artist)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    @Override
+    public String getInfo() {
+        return "Artist: " + this.artist + "; Song Title: " + this.songTitle + "; Duration: " + this.durationSeconds + ";";
+    }
+
     public void updateNumTimesPlayed(){
         numTimesPlayed++;
     }
@@ -32,20 +47,5 @@ public class SongList implements Song{
 
     public int getNumTimesPlayed(){
         return numTimesPlayed;
-    }
-
-    public boolean equals(String songTitle, String artist){
-        if (this.songTitle.equals(songTitle) && this.getArtist().equals(artist)){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    @Override
-    public String getInfo() {
-        // TODO Auto-generated method stub
-        return null;
     }
 }

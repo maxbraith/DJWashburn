@@ -1,6 +1,7 @@
 package edu.ithaca.dragon.datastructures.set.Song;
 
 public interface Song {
+    //This interface was probably not needed but we implemented it anyways to stay on the same page
 
     /**
      * @return 
