@@ -21,7 +21,7 @@ public interface CollectionOfPlaylists {
      * @throws InstanceAlreadyExistsException if playlist name is already used
      * @throws IllegalArgumentException if seconds is less than 10
      */
-    void createRandomPlaylist(int durationSeconds, String name, Library library);
+    void createRandomPlaylist(int durationSeconds, String name);
 
 
     /**

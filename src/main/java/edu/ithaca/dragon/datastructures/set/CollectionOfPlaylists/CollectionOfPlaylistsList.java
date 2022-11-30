@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import edu.ithaca.dragon.datastructures.set.Library.Library;
+import edu.ithaca.dragon.datastructures.set.Library.LibraryList;
 import edu.ithaca.dragon.datastructures.set.Playlist.Playlist;
 import edu.ithaca.dragon.datastructures.set.Playlist.PlaylistList;
 import edu.ithaca.dragon.datastructures.set.Song.Song;
@@ -11,9 +12,11 @@ import edu.ithaca.dragon.datastructures.set.Song.Song;
 public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
 
     private ArrayList<Playlist> playlists;
+    public LibraryList library;
 
-    public CollectionOfPlaylistsList(){
+    public CollectionOfPlaylistsList(LibraryList library){
         playlists = new ArrayList<>();
+        this.library = library;
     }
     
     public void removeSong(Song songToRemove){
@@ -22,7 +25,7 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
         }
     }
 
-    public void createRandomPlaylist(int requestedDurationSeconds, String name, Library library){
+    public void createRandomPlaylist(int requestedDurationSeconds, String name){
         Random rand = new Random();
         Playlist playlistToCreate = new PlaylistList(name);
         while (playlistToCreate.returnDurationSeconds()<=requestedDurationSeconds){
@@ -65,5 +68,9 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
 
     public int returnCollectionSize(){
         return playlists.size();
+    }
+
+    public Playlist getPlaylist(int index){
+        return playlists.get(index);
     }
 }

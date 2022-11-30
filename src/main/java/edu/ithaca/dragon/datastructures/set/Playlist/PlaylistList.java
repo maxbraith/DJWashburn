@@ -24,6 +24,10 @@ public class PlaylistList implements Playlist{
         durationSeconds-=song.getDurationSeconds();
     }
 
+    public void removeLatest(){
+        songs.remove(songs.size()-1);
+    }
+
     public String getAllSongs(){
         String allSongs = "";
         for (int i=0; i<songs.size(); i++){
