@@ -52,9 +52,14 @@ public interface CollectionOfPlaylists {
 
 
     /**
-     * need comments
+     * @post add the name and the duration of playlists to a list
+     * @return null if there are no playlists
+     * @return list of playlists names and duration
      */
     String returnCollectionOfPlaylistsInfo();
 
+    /**
+     * @return size of the arrayList playlists
+     */
     int returnCollectionSize();
 }

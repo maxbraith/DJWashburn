@@ -27,20 +27,14 @@ public class LibraryList implements Library{
         return allSongsInString;
     }
 
-    public String getArtist(Song song){
-        return song.getArtist();
-    }
-
-    public String getSongTitle(Song song){
-        return song.getSongTitle();
-    }
-
-    public int getDurationSeconds(Song song){
-        return song.getDurationSeconds();
-    }
-
-    public int getNumTimesPlayed(Song song){
-        return song.getNumTimesPlayed();
+    public Song songSearch(String songTitle, String artist){
+        for (int i=0; i<songList.size(); i++){
+            if ((songList.get(i).getArtist().equals(artist))&&(songList.get(i).getSongTitle().equals(songTitle))){
+                return (Song)songList.get(i);
+            }
+        }
+        //Made me add this return to avoid void error
+        return null;
     }
 
     public void addSongs(ArrayList<Song> songsToAddList){
@@ -63,18 +57,24 @@ public class LibraryList implements Library{
         return songList.size();
     }
 
-    public Song songSearch(String songTitle, String artist){
-        for (int i=0; i<songList.size(); i++){
-            if ((songList.get(i).getArtist().equals(artist))&&(songList.get(i).getSongTitle().equals(songTitle))){
-                return (Song)songList.get(i);
-            }
-        }
-        //Made me add this return to avoid void error
+    public CollectionOfPlaylists getPlaylists(){
         return null;
     }
 
-    public CollectionOfPlaylists getPlaylists(){
-        return null;
+    public String getArtist(Song song){
+        return song.getArtist();
+    }
+
+    public String getSongTitle(Song song){
+        return song.getSongTitle();
+    }
+
+    public int getDurationSeconds(Song song){
+        return song.getDurationSeconds();
+    }
+
+    public int getNumTimesPlayed(Song song){
+        return song.getNumTimesPlayed();
     }
 
 }

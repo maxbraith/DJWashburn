@@ -37,8 +37,16 @@ public interface Library {
      */
     CollectionOfPlaylists getPlaylists();
 
+    /**
+     * @return size of library
+     */
     int getListSize();
 
+    /**
+     *
+     * @param randIndex
+     * @return song at index
+     */
     Song getSongFromList(int randIndex);
 
 }

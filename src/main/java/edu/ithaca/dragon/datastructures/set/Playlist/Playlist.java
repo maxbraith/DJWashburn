@@ -50,6 +50,10 @@ public interface Playlist {
      */
     public boolean contains(Song songToCheck);
 
+    /**
+     * 
+     * @return name of playlist
+     */
     public String getName();
 
 }

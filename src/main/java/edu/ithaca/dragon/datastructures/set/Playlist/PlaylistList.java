@@ -15,10 +15,6 @@ public class PlaylistList implements Playlist{
         songs = new ArrayList<Song>();
         durationSeconds = 0;
     }
-    
-    public String getName(){
-        return this.name;
-    }
 
     public void removeSong(Song song){
         removeSong1((Song)song);
@@ -68,5 +64,9 @@ public class PlaylistList implements Playlist{
             }
         }
         return false;
+    }
+
+    public String getName(){
+        return this.name;
     }
 }
