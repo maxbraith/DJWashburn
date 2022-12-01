@@ -82,7 +82,7 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
     public String returnCollectionOfPlaylistsInfo(){
         String stringToReturn = "";
         for (int i=0; i<playlists.size(); i++){
-            stringToReturn += playlists.get(i).getName() + ": " + playlists.get(i).returnDurationSeconds() + "Seconds \n";
+            stringToReturn += playlists.get(i).getName() + ": " + playlists.get(i).returnDurationSeconds() + " Seconds \n";
         }
         return stringToReturn;
     }

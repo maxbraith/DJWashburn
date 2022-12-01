@@ -31,7 +31,7 @@ public class LibraryList implements Library{
 
     public Song songSearch(String songTitle, String artist){
         for (int i=0; i<songList.size(); i++){
-            if ((songList.get(i).getArtist().equals(artist))&&(songList.get(i).getSongTitle().equals(songTitle))){
+            if ((songList.get(i).getArtist().equalsIgnoreCase(artist))&&(songList.get(i).getSongTitle().equalsIgnoreCase(songTitle))){
                 return (Song)songList.get(i);
             }
         }

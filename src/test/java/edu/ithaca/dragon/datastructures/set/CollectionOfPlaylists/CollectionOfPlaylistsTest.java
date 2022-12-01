@@ -77,23 +77,18 @@ public class CollectionOfPlaylistsTest {
         collection.removeSong(collection.library.songSearch("Circo Loco", "Drake"));
         collection.removeSong(collection.library.songSearch("Stay", "Post MAlone"));
         collection.removeSong(collection.library.songSearch("Suge", "DaBaby"));
-        collection.removeSong(collection.library.songSearch("CHief Keef", "Love Sosa"));
-        assertThrows(NoSuchElementException.class, () -> collection.removeSong(collection.library.songSearch("CHief Keef", "Love Sosa")));
-        assertThrows(NoSuchElementException.class, () -> collection.removeSong(collection.library.songSearch("Playboi Carti", "Shootas")));
-        assertThrows(NoSuchElementException.class, () -> collection.removeSong(collection.library.songSearch("Playboi Carti", " shoota")));
-        assertThrows(NoSuchElementException.class, () -> collection.removeSong(collection.library.songSearch("CHief Keef", "Shoota")));
-        assertThrows(NoSuchElementException.class, () -> collection.removeSong(collection.library.songSearch("Playboi Carti", "onire")));
-        collection.removeSong(collection.library.songSearch("Playboi Carti", "Shoota"));
+        collection.removeSong(collection.library.songSearch("Love Sosa", "ChieF Keef"));
+        collection.removeSong(collection.library.songSearch("Shoota", "Playboi Carti"));
         assertEquals("", collection.library.songs());
-        assertEquals("", collection.returnCollectionOfPlaylistsInfo());
+        assertEquals("Jeff: 0 Seconds \nBob: 0 Seconds \nPulter: 0 Seconds \nTarry: 0 Seconds \nReno: 0 Seconds \nAlpha: 0 Seconds \nBravo: 0 Seconds \nCharlie: 0 Seconds \nEcho: 0 Seconds \nFoxtrot: 0 Seconds \n", collection.returnCollectionOfPlaylistsInfo());
     }
 
     @Test
     public void removePlaylistTest(){
         CollectionOfPlaylistsList collection = new CollectionOfPlaylistsList((LibraryList) testList.returnLibrary());
-        assertThrows(NoSuchElementException.class, () -> collection.removePlaylist("Jeff"));
+        collection.removePlaylist("Jeff");
         collection.createRandomPlaylist(1200, "Bob");
-        assertThrows(NoSuchElementException.class, () -> collection.removePlaylist("Jeff"));
+        collection.removePlaylist("Jeff"));
         collection.removePlaylist("Bob");
         assertEquals(collection.returnCollectionSize(), 0);
         collection.createRandomPlaylist(1200, "Jeff");

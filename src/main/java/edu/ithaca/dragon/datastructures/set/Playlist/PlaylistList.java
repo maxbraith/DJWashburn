@@ -22,8 +22,10 @@ public class PlaylistList implements Playlist{
         removeSong1((Song)song);
     }
     public void removeSong1(Song song){
-        songs.remove(song);
-        durationSeconds-=song.getDurationSeconds();
+        if (songs.contains(song)){
+            durationSeconds-=song.getDurationSeconds();
+            songs.remove(song);  
+        }  
     }
 
     public void removeLatest(){

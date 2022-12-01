@@ -11,7 +11,6 @@ public interface CollectionOfPlaylists {
      * @param song - valid name of song
      * @param artist - valid name of artist
      * @post remove the specific song from all playlists
-     * @throws NotFoundException if the item does not exist
      */
     void removeSong(Song songToRemove);
 
