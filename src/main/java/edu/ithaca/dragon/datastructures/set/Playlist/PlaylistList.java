@@ -6,6 +6,8 @@ import edu.ithaca.dragon.datastructures.set.Song.Song;
 
 public class PlaylistList implements Playlist{
 
+     //author Giovanni
+
     String name;
     ArrayList<Song> songs;
     int durationSeconds;

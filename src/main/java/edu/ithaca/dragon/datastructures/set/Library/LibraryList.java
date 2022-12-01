@@ -8,6 +8,8 @@ import edu.ithaca.dragon.datastructures.set.Song.Song;
 
 public class LibraryList implements Library{
 
+     //author Giovanni
+
     private ArrayList<Song> songList;
 
     public LibraryList(){

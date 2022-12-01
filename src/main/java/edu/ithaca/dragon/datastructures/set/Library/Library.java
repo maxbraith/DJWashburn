@@ -7,6 +7,8 @@ import edu.ithaca.dragon.datastructures.set.Song.Song;
 
 public interface Library {
 
+    //author Griffin
+    
     /**
      * @return a list of songs in alphabetical order contained within the library (artist first)
      */

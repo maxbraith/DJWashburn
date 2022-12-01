@@ -15,6 +15,9 @@ import javax.management.InstanceAlreadyExistsException;
 import org.junit.jupiter.api.Test;
 
 public class CollectionOfPlaylistsTest {
+
+     //author Giovanni
+     
     @Test
     public void createEmptyPlaylistTest(){
     CollectionOfPlaylistsList collection = new CollectionOfPlaylistsList((LibraryList) testList.returnLibrary());
