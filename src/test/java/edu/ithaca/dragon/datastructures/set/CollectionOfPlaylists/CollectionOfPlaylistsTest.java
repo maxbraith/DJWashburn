@@ -26,7 +26,7 @@ public class CollectionOfPlaylistsTest {
     assertEquals(1, collection.returnCollectionSize());
     assertEquals("Jeff", collection.getPlaylist(0).getName());  
     assertEquals(true, collection.getPlaylist(0).checkEmpty());  
-    assertThrows(InstanceAlreadyExistsException.class, () -> collection.createEmptyPlaylist("Jeff"));
+    assertThrows(IllegalArgumentException.class, () -> collection.createEmptyPlaylist("Jeff"));
     collection.createEmptyPlaylist("Maria");
     assertEquals(2, collection.returnCollectionSize());
     assertEquals("Maria", collection.getPlaylist(1).getName());  
