@@ -22,7 +22,7 @@ public interface CollectionOfPlaylists {
      * @post create a playlist with the playlist name
      * @post randomly add songs to the playlist to make it the exact time specified by the seconds
      * @throws InstanceAlreadyExistsException if playlist name is already used
-     * @throws IllegalArgumentException if seconds is less than 10
+     * @throws IllegalArgumentException if seconds is less than shortest song in library
      */
     void createRandomPlaylist(int durationSeconds, String name);
 
@@ -69,6 +69,7 @@ public interface CollectionOfPlaylists {
     /**
      * @param valid index of arraylist playlist
      * @return playlist object of the arrayList playlists
+     * @throws IndexOutOfBoundsException if 
      */
     public Playlist getPlaylist(int index);
 

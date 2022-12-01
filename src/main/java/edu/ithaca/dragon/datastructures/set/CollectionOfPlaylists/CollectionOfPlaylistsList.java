@@ -3,6 +3,8 @@ package edu.ithaca.dragon.datastructures.set.CollectionOfPlaylists;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.management.InstanceAlreadyExistsException;
+
 import edu.ithaca.dragon.datastructures.set.Library.LibraryList;
 import edu.ithaca.dragon.datastructures.set.Playlist.Playlist;
 import edu.ithaca.dragon.datastructures.set.Playlist.PlaylistList;
@@ -30,6 +32,13 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
     }
 
     public void createRandomPlaylist(int requestedDurationSeconds, String name){
+        if (requestedDurationSeconds<library.shortestSong()){
+            throw new IllegalArgumentException();
+        }
+        for (int i=0; i<playlists.size(); i++){
+            if (playlists.get(i).getName().equals(name))
+            throw new InstanceAlreadyExistsException();
+        }
         Random rand = new Random();
         PlaylistList playlistToCreate = new PlaylistList(name);
         while (playlistToCreate.returnDurationSeconds()<=requestedDurationSeconds){
@@ -67,7 +76,7 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
     public String returnCollectionOfPlaylistsInfo(){
         String stringToReturn = "";
         for (int i=0; i<playlists.size(); i++){
-            stringToReturn += playlists.get(i).getName() + playlists.get(i).returnDurationSeconds();
+            stringToReturn += playlists.get(i).getName() + ": " + playlists.get(i).returnDurationSeconds() + "Seconds \n";
         }
         return stringToReturn;
     }
@@ -77,6 +86,8 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
     }
 
     public Playlist getPlaylist(int index){
+        if ((index>=playlists.size()) || index<0)
+        return null;
         return playlists.get(index);
     }
 
