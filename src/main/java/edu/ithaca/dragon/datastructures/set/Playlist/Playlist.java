@@ -55,5 +55,6 @@ public interface Playlist {
      * @return name of playlist
      */
     public String getName();
+    public void removeLatest();
 
 }

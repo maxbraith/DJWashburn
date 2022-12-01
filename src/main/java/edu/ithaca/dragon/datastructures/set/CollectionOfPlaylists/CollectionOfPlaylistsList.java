@@ -3,7 +3,6 @@ package edu.ithaca.dragon.datastructures.set.CollectionOfPlaylists;
 import java.util.ArrayList;
 import java.util.Random;
 
-import edu.ithaca.dragon.datastructures.set.Library.Library;
 import edu.ithaca.dragon.datastructures.set.Library.LibraryList;
 import edu.ithaca.dragon.datastructures.set.Playlist.Playlist;
 import edu.ithaca.dragon.datastructures.set.Playlist.PlaylistList;
@@ -23,16 +22,21 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
         for (int i=0; i<playlists.size(); i++){
             playlists.get(i).removeSong(songToRemove);
         }
+        ArrayList<Song> songs = new ArrayList<>();
+        songs.add(songToRemove);
+        library.removeSongs(songs);
     }
 
     public void createRandomPlaylist(int requestedDurationSeconds, String name){
         Random rand = new Random();
-        Playlist playlistToCreate = new PlaylistList(name);
+        PlaylistList playlistToCreate = new PlaylistList(name);
         while (playlistToCreate.returnDurationSeconds()<=requestedDurationSeconds){
            int randIndex = rand.nextInt(library.getListSize());
            if (playlistToCreate.contains(library.getSongFromList(randIndex))==false)
            playlistToCreate.addSong(library.getSongFromList(randIndex));
         }
+        playlistToCreate.removeLatest();
+        playlists.add(playlistToCreate);
     }
 
     public void createEmptyPlaylist(String name){
@@ -42,7 +46,7 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
 
     public void removePlaylist(String name){
         for (int i=0; i<playlists.size(); i++){
-            if (playlists.get(i).equals(name)){
+            if (playlists.get(i).getName().equals(name)){
                 playlists.remove(i);
             }
         }
@@ -72,5 +76,14 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
 
     public Playlist getPlaylist(int index){
         return playlists.get(index);
+    }
+
+    public boolean containsPlaylist(String name){
+        for (int i=0; i<playlists.size(); i++){
+            if (playlists.get(i).getName().equals(name)){
+                return true;
+            }
+        }
+        return false;
     }
 }
