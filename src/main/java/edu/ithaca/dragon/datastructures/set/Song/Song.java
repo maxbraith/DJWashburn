@@ -1,6 +1,8 @@
 package edu.ithaca.dragon.datastructures.set.Song;
 
 public class Song {
+
+     //author Giovanni
     
     String artist;
     String songTitle;

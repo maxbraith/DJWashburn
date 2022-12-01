@@ -6,6 +6,8 @@ import edu.ithaca.dragon.datastructures.set.Song.Song;
 
 public class PlaylistList implements Playlist{
 
+     //author Giovanni
+
     String name;
     ArrayList<Song> songs;
     int durationSeconds;
@@ -22,6 +24,10 @@ public class PlaylistList implements Playlist{
     public void removeSong1(Song song){
         songs.remove(song);
         durationSeconds-=song.getDurationSeconds();
+    }
+
+    public void removeLatest(){
+        songs.remove(songs.size()-1);
     }
 
     public String getAllSongs(){

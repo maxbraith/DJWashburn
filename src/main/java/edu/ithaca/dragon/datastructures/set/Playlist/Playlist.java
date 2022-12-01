@@ -4,6 +4,8 @@ import edu.ithaca.dragon.datastructures.set.Song.Song;
 
 public interface Playlist {
 
+    //author Griffin
+    
     /**
      * @pre song has to be valid
      * @param song song to remove
@@ -55,5 +57,6 @@ public interface Playlist {
      * @return name of playlist
      */
     public String getName();
+    public void removeLatest();
 
 }

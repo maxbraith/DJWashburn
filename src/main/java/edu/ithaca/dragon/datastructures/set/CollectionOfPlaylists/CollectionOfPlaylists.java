@@ -1,9 +1,12 @@
 package edu.ithaca.dragon.datastructures.set.CollectionOfPlaylists;
 
-import edu.ithaca.dragon.datastructures.set.Library.Library;
+import edu.ithaca.dragon.datastructures.set.Playlist.Playlist;
 import edu.ithaca.dragon.datastructures.set.Song.Song;
 
 public interface CollectionOfPlaylists {
+    
+    //author Griffin
+    
     /**
      * @param song - valid name of song
      * @param artist - valid name of artist
@@ -21,7 +24,7 @@ public interface CollectionOfPlaylists {
      * @throws InstanceAlreadyExistsException if playlist name is already used
      * @throws IllegalArgumentException if seconds is less than 10
      */
-    void createRandomPlaylist(int durationSeconds, String name, Library library);
+    void createRandomPlaylist(int durationSeconds, String name);
 
 
     /**
@@ -62,4 +65,16 @@ public interface CollectionOfPlaylists {
      * @return size of the arrayList playlists
      */
     int returnCollectionSize();
+
+    /**
+     * @param valid index of arraylist playlist
+     * @return playlist object of the arrayList playlists
+     */
+    public Playlist getPlaylist(int index);
+
+    /**
+     * @param name of playlist
+     * @return true or false based on whether or not the playlist is in the list
+     */
+    public boolean containsPlaylist(String name);
 }

@@ -7,6 +7,8 @@ import edu.ithaca.dragon.datastructures.set.Song.Song;
 
 public interface Library {
 
+    //author Griffin
+
     /**
      * @return a list of songs in alphabetical order contained within the library (artist first)
      */
@@ -17,6 +19,7 @@ public interface Library {
      * @param artist - a string of a valid artist
      * @post find a specific song's information
      * @return the information found
+     * @throws NotFoundException if the song does not exist
      */
     Song songSearch(String song, String artist);
 
@@ -28,7 +31,7 @@ public interface Library {
 
     /**
      * @param listOfSongs - a list of songs
-     * @post remove this list of songs from the library AND any playlist in which they occur
+     * @post remove this list of songs from the library
      */
     void removeSongs(ArrayList<Song> listOfSongs);
 
@@ -44,9 +47,9 @@ public interface Library {
 
     /**
      *
-     * @param randIndex
+     * @param index
      * @return song at index
      */
-    Song getSongFromList(int randIndex);
+    Song getSongFromList(int index);
 
 }
