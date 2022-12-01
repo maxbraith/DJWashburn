@@ -1,5 +1,7 @@
 package edu.ithaca.dragon.datastructures.set.Song;
 
+import java.util.UUID;
+
 public class Song {
 
      //author Giovanni
@@ -8,12 +10,14 @@ public class Song {
     String songTitle;
     int durationSeconds;
     int numTimesPlayed;
+    String id;
 
     public Song(String artist, String songTitle, int durationSeconds, int numTimesPlayed){
         this.artist = artist;
         this.songTitle = songTitle;
         this.durationSeconds = durationSeconds;
         this.numTimesPlayed = numTimesPlayed;
+        this.id = UUID.randomUUID().toString();
     }
 
     public boolean equals(String songTitle, String artist){
@@ -48,4 +52,6 @@ public class Song {
     public int getNumTimesPlayed(){
         return numTimesPlayed;
     }
+
+    public String getId() { return id; }
 }
