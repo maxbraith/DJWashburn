@@ -7,7 +7,7 @@ import edu.ithaca.dragon.datastructures.set.Song.Song;
 public class testList {
 
      //author Giovanni
-     
+
     public static ArrayList<Song> returnSongs(){
         ArrayList<Song> songs = new ArrayList<>();
         Song song1 = new Song("Playboi Carti", "Shoota", 90, 0);
@@ -19,7 +19,7 @@ public class testList {
         Song song7 = new Song("Kanye West", "Ultralight Beam", 500, 0);
         Song song8 = new Song("A$AP Rocky", "L$D", 180, 0);
         Song song9 = new Song("Drake", "Circo Loco", 400, 0);
-        Song song10 = new Song("Kendrick Lamar", "Money Trees", 0, 0);
+        Song song10 = new Song("Kendrick Lamar", "Money Trees", 360, 0);
         songs.add(song1);
         songs.add(song2);
         songs.add(song3);
