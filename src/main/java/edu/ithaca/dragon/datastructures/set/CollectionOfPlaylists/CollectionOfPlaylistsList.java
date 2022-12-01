@@ -32,12 +32,12 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
     }
 
     public void createRandomPlaylist(int requestedDurationSeconds, String name){
-        if (requestedDurationSeconds<library.shortestSong()){
+        if (requestedDurationSeconds<library.shortestSongDuration()){
             throw new IllegalArgumentException();
         }
         for (int i=0; i<playlists.size(); i++){
             if (playlists.get(i).getName().equals(name))
-            throw new InstanceAlreadyExistsException();
+            throw new IllegalArgumentException();
         }
         Random rand = new Random();
         PlaylistList playlistToCreate = new PlaylistList(name);
@@ -51,6 +51,10 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
     }
 
     public void createEmptyPlaylist(String name){
+        for (int i=0; i<playlists.size(); i++){
+            if (playlists.get(i).getName().equals(name))
+            throw new IllegalArgumentException();
+        }
         Playlist newPlaylist = new PlaylistList(name);
         playlists.add(newPlaylist);
     }

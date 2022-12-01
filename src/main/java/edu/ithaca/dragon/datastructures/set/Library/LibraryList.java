@@ -79,4 +79,14 @@ public class LibraryList implements Library{
         return song.getNumTimesPlayed();
     }
 
+    public int shortestSongDuration(){
+        int duration1= 100000000;
+        for (int i=0; i<songList.size(); i++){
+            if (songList.get(i).getDurationSeconds()<duration1){
+                duration1 = songList.get(i).getDurationSeconds();
+            }
+        }
+        return duration1;
+    }
+
 }
