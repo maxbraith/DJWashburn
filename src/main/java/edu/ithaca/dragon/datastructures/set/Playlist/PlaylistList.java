@@ -27,6 +27,7 @@ public class PlaylistList implements Playlist{
     }
 
     public void removeLatest(){
+        durationSeconds-=songs.get(songs.size()-1).getDurationSeconds();
         songs.remove(songs.size()-1);
     }
 
@@ -74,5 +75,9 @@ public class PlaylistList implements Playlist{
 
     public String getName(){
         return this.name;
+    }
+
+    public int getSize(){
+        return songs.size();
     }
 }
