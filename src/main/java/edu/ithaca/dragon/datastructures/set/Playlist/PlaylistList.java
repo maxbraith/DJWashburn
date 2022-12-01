@@ -36,7 +36,7 @@ public class PlaylistList implements Playlist{
     public String getAllSongs(){
         String allSongs = "";
         for (int i=0; i<songs.size(); i++){
-            allSongs = allSongs + songs.get(i).getSongTitle();
+            allSongs = allSongs + songs.get(i).getSongTitle() +"\n";
         }
         return allSongs;
     }

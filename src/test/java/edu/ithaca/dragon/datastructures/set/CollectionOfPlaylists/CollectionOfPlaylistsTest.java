@@ -5,13 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.NoSuchElementException;
-
 import edu.ithaca.dragon.datastructures.set.Library.LibraryList;
 import edu.ithaca.dragon.datastructures.set.Library.testList;
 import edu.ithaca.dragon.datastructures.set.Song.Song;
 
-import javax.management.InstanceAlreadyExistsException;
 import org.junit.jupiter.api.Test;
 
 public class CollectionOfPlaylistsTest {
@@ -88,7 +85,7 @@ public class CollectionOfPlaylistsTest {
         CollectionOfPlaylistsList collection = new CollectionOfPlaylistsList((LibraryList) testList.returnLibrary());
         collection.removePlaylist("Jeff");
         collection.createRandomPlaylist(1200, "Bob");
-        collection.removePlaylist("Jeff"));
+        collection.removePlaylist("Jeff");
         collection.removePlaylist("Bob");
         assertEquals(collection.returnCollectionSize(), 0);
         collection.createRandomPlaylist(1200, "Jeff");
@@ -109,26 +106,29 @@ public class CollectionOfPlaylistsTest {
         assertFalse(collection.containsPlaylist("Tarry"));
     }
 
+    @Test
     public void returnSongsInPlaylistTest(){
         CollectionOfPlaylistsList collection = new CollectionOfPlaylistsList((LibraryList) testList.returnLibrary());
-        assertNull(collection.returnSongsInPlaylist("Jeff"));
+        assertEquals("", collection.returnSongsInPlaylist("Jeff"));
         collection.createEmptyPlaylist("Bob");
-        assertNull(collection.returnSongsInPlaylist("Jeff"));
+        assertEquals("", collection.returnSongsInPlaylist("Jeff"));
         collection.createRandomPlaylist(100, "Jeff");
-        assertEquals("Shoota", collection.returnSongsInPlaylist("Jeff"));
-        collection.getPlaylist(0).addSong( new Song("Pop Smoke", "Element", 120, 0));
-        assertEquals("Shoota \n Element \n", collection.returnSongsInPlaylist("Jeff"));
+        assertEquals("Shoota\n", collection.returnSongsInPlaylist("Jeff"));
+        collection.getPlaylist(1).addSong(new Song("Pop Smoke", "Element", 120, 0));
+        assertEquals("Shoota\nElement\n", collection.returnSongsInPlaylist("Jeff"));
     }
 
+    @Test
     public void returnCollectionOfPlaylistsInfoTest(){
         CollectionOfPlaylistsList collection = new CollectionOfPlaylistsList((LibraryList) testList.returnLibrary());
         assertEquals("",collection.returnCollectionOfPlaylistsInfo());
         collection.createEmptyPlaylist("Bob");
-        assertEquals("Bob 0", collection.returnCollectionOfPlaylistsInfo());
-        collection.createRandomPlaylist(1200, "Jeff");
-        assertEquals("Bob 0 \n Jeff 1200", collection.returnCollectionOfPlaylistsInfo());
+        assertEquals("Bob: 0 Seconds \n", collection.returnCollectionOfPlaylistsInfo());
+        collection.createEmptyPlaylist("Jeff");
+        assertEquals("Bob: 0 Seconds \nJeff: 0 Seconds \n", collection.returnCollectionOfPlaylistsInfo());
     }
 
+    @Test
     public void returnCollectionSizeTest(){
         CollectionOfPlaylistsList collection = new CollectionOfPlaylistsList((LibraryList) testList.returnLibrary());
         assertEquals(0, collection.returnCollectionSize());
@@ -138,6 +138,7 @@ public class CollectionOfPlaylistsTest {
         assertEquals(2, collection.returnCollectionSize());
     }
 
+    @Test
     public void getPlaylistTest(){
         CollectionOfPlaylistsList collection = new CollectionOfPlaylistsList((LibraryList) testList.returnLibrary());
         assertNull(collection.getPlaylist(0));
@@ -150,6 +151,7 @@ public class CollectionOfPlaylistsTest {
         assertEquals("Tarry", collection.getPlaylist(2).getName());
     }
 
+    @Test
     public void containsPlaylistTest(){
         CollectionOfPlaylistsList collection = new CollectionOfPlaylistsList((LibraryList) testList.returnLibrary());
         assertFalse(collection.containsPlaylist("Bob"));
