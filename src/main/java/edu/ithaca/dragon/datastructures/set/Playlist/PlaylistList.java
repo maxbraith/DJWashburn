@@ -22,18 +22,21 @@ public class PlaylistList implements Playlist{
         removeSong1((Song)song);
     }
     public void removeSong1(Song song){
-        songs.remove(song);
-        durationSeconds-=song.getDurationSeconds();
+        if (songs.contains(song)){
+            durationSeconds-=song.getDurationSeconds();
+            songs.remove(song);  
+        }  
     }
 
     public void removeLatest(){
+        durationSeconds-=songs.get(songs.size()-1).getDurationSeconds();
         songs.remove(songs.size()-1);
     }
 
     public String getAllSongs(){
         String allSongs = "";
         for (int i=0; i<songs.size(); i++){
-            allSongs = allSongs + songs.get(i).getSongTitle();
+            allSongs = allSongs + songs.get(i).getSongTitle() +"\n";
         }
         return allSongs;
     }
@@ -74,5 +77,9 @@ public class PlaylistList implements Playlist{
 
     public String getName(){
         return this.name;
+    }
+
+    public int getSize(){
+        return songs.size();
     }
 }

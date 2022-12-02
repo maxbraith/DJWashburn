@@ -31,7 +31,7 @@ public class LibraryList implements Library{
 
     public Song songSearch(String songTitle, String artist){
         for (int i=0; i<songList.size(); i++){
-            if ((songList.get(i).getArtist().equals(artist))&&(songList.get(i).getSongTitle().equals(songTitle))){
+            if ((songList.get(i).getArtist().equalsIgnoreCase(artist))&&(songList.get(i).getSongTitle().equalsIgnoreCase(songTitle))){
                 return (Song)songList.get(i);
             }
         }
@@ -79,14 +79,16 @@ public class LibraryList implements Library{
         return song.getNumTimesPlayed();
     }
 
-    public int shortestSongDuration(){
+    public Song shortestSongDuration(){
         int duration1= 100000000;
+        Song shortestSong= null;
         for (int i=0; i<songList.size(); i++){
             if (songList.get(i).getDurationSeconds()<duration1){
                 duration1 = songList.get(i).getDurationSeconds();
+                shortestSong = songList.get(i);
             }
         }
-        return duration1;
+        return shortestSong;
     }
 
 }

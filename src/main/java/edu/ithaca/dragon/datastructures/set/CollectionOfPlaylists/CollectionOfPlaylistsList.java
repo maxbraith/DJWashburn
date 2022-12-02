@@ -32,7 +32,7 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
     }
 
     public void createRandomPlaylist(int requestedDurationSeconds, String name){
-        if (requestedDurationSeconds<library.shortestSongDuration()){
+        if (requestedDurationSeconds<library.shortestSongDuration().getDurationSeconds()){
             throw new IllegalArgumentException();
         }
         for (int i=0; i<playlists.size(); i++){
@@ -41,12 +41,14 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
         }
         Random rand = new Random();
         PlaylistList playlistToCreate = new PlaylistList(name);
+        playlistToCreate.addSong(library.shortestSongDuration());
         while (playlistToCreate.returnDurationSeconds()<=requestedDurationSeconds){
            int randIndex = rand.nextInt(library.getListSize());
            if (playlistToCreate.contains(library.getSongFromList(randIndex))==false)
            playlistToCreate.addSong(library.getSongFromList(randIndex));
         }
-        playlistToCreate.removeLatest();
+        if (playlistToCreate.getSize()>1){
+        playlistToCreate.removeLatest();}
         playlists.add(playlistToCreate);
     }
 
@@ -80,7 +82,7 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
     public String returnCollectionOfPlaylistsInfo(){
         String stringToReturn = "";
         for (int i=0; i<playlists.size(); i++){
-            stringToReturn += playlists.get(i).getName() + ": " + playlists.get(i).returnDurationSeconds() + "Seconds \n";
+            stringToReturn += playlists.get(i).getName() + ": " + playlists.get(i).returnDurationSeconds() + " Seconds \n";
         }
         return stringToReturn;
     }
