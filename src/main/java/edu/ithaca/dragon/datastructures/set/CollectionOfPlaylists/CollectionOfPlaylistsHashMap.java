@@ -93,7 +93,6 @@ public class CollectionOfPlaylistsHashMap implements CollectionOfPlaylists{
     public boolean containsPlaylist(String playlistID) {
         return playlists.containsKey(playlistID);
     }
-    //Max
 
     
 }
