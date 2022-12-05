@@ -36,11 +36,6 @@ public interface Library {
     void removeSongs(ArrayList<Song> listOfSongs);
 
     /**
-     * @return the collection of playlists within the library
-     */
-    CollectionOfPlaylists getPlaylists();
-
-    /**
      * @return size of library
      */
     int getListSize();
@@ -52,4 +47,10 @@ public interface Library {
      */
     Song getSongFromList(int index);
 
+    /**
+     * @post find the shortest song within the library
+     * @return the song that is shortest within the library
+     * @return null if the library is empty
+     */
+    Song shortestSongDuration();
 }

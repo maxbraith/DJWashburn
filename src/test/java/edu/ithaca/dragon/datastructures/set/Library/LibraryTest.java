@@ -8,20 +8,29 @@ import edu.ithaca.dragon.datastructures.set.Song.Song;
 
 import org.junit.jupiter.api.Test;
 public class LibraryTest {
-   
-    //author Giovanni
 
     @Test
-    public void songsTest(){
-        LibraryList library1 = new LibraryList();
+    public void libraryTest() {
+        allTests(new LibraryList());
+        allTests(new LibraryTreeMap());
+    }
+
+    public void allTests(Library test) {
+        songsTest(test);
+        songSearchTest(test);
+        addRemoveSongsTest(test);
+        getListSizeTest(test);
+        getSongAndSongInfoTest(test);
+        shortestSongDurationTest(test);
+    }
+
+    public void songsTest(Library library1){
         assertEquals("", library1.songs());
         library1.addSongs(testList.returnSongs());
         assertEquals("A$AP Rocky L$D \n Chief Keef \n DaBaby Suge \n Drake Circo Loco \n Kanye West Ultralight Beam \n Kendrick Lamar Money Trees \n Playboi Carti Shoota \n Pop Smoke Element \n Pop Smoke Meet The Woo \n Post Malone Stay", library1.songs());
     }
 
-    @Test
-    public void songSearchTest(){
-        LibraryList library1 = new LibraryList();
+    public void songSearchTest(Library library1){
         assertThrows(IllegalArgumentException.class, () -> library1.songSearch("Bob", "Jake"));
         library1.addSongs(testList.returnSongs());
         assertThrows(IllegalArgumentException.class, () -> library1.songSearch("Drill", "Pop Smoke"));
@@ -42,9 +51,7 @@ public class LibraryTest {
         assertThrows(IllegalArgumentException.class, () -> library1.songSearch("Pop Smoke", "Element"));
     }
 
-    @Test
-    public void addRemoveSongsTest(){
-        LibraryList library1 = new LibraryList();
+    public void addRemoveSongsTest(Library library1){
         assertEquals(0, library1.getListSize());
         library1.addSongs(testList.returnSongs());
         assertEquals("A$AP Rocky L$D \n Chief Keef \n DaBaby Suge \n Drake Circo Loco \n Kanye West Ultralight Beam \n Kendrick Lamar Money Trees \n Playboi Carti Shoota \n Pop Smoke Element \n Pop Smoke Meet The Woo \n Post Malone Stay", library1.songs());
@@ -54,9 +61,7 @@ public class LibraryTest {
         assertEquals("", library1.songs());
     }
 
-    @Test
-    public void getListSizeTest(){
-        LibraryList library1 = new LibraryList();
+    public void getListSizeTest(Library library1){
         assertEquals(0, library1.getListSize());
         library1.addSongs(testList.returnSongs());
         assertEquals(10, library1.getListSize());
@@ -64,9 +69,7 @@ public class LibraryTest {
         assertEquals(0, library1.getListSize());
     }
 
-    @Test
-    public void getSongAndSongInfoTest(){
-        LibraryList library1 = new LibraryList();
+    public void getSongAndSongInfoTest(Library library1){
         assertThrows(NoSuchElementException.class, ()-> library1.getSongFromList(0));
         library1.addSongs(testList.returnSongs());
         assertThrows(NoSuchElementException.class, ()-> library1.getSongFromList(23));
@@ -78,11 +81,9 @@ public class LibraryTest {
         assertThrows(NoSuchElementException.class, ()-> library1.getSongFromList(0));
     }
 
-    @Test
-    public void shortestSongDurationTest(){
+    public void shortestSongDurationTest(Library library1){
         ArrayList<Song> singleSong = new ArrayList<>();
         singleSong.add(new Song("Pop Smoke", "Remember", 180, 0));
-        LibraryList library1 = new LibraryList();
         assertEquals(null, library1.shortestSongDuration());
         library1.addSongs(singleSong);
         assertEquals(singleSong.get(0), library1.shortestSongDuration());
