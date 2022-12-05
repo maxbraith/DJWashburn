@@ -17,7 +17,7 @@ public class Song {
         this.songTitle = songTitle;
         this.durationSeconds = durationSeconds;
         this.numTimesPlayed = numTimesPlayed;
-        this.id = UUID.randomUUID().toString();
+        this.id = artist + ", " + songTitle;
     }
 
     public boolean equals(String songTitle, String artist){

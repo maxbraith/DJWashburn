@@ -3,15 +3,16 @@ package edu.ithaca.dragon.datastructures.set.Library;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 import edu.ithaca.dragon.datastructures.set.CollectionOfPlaylists.CollectionOfPlaylists;
 import edu.ithaca.dragon.datastructures.set.Song.Song;
 
-public class LibraryHashMap implements Library {
-    private HashMap<String, Song> songMap;
+public class LibraryTreeMap implements Library {
+    private TreeMap<String, Song> songMap;
 
-    public LibraryHashMap(){
-        songMap = new HashMap<String, Song>();
+    public LibraryTreeMap(){
+        songMap = new TreeMap<String, Song>();
     }
 
 
@@ -31,7 +32,6 @@ public class LibraryHashMap implements Library {
 
     }
 
-    @Override
     public Song songSearch(String songID) {
         return songMap.get(songID);
     }
@@ -65,6 +65,13 @@ public class LibraryHashMap implements Library {
 
     @Override
     public Song getSongFromList(int index) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+
+    @Override
+    public Song songSearch(String song, String artist) {
         // TODO Auto-generated method stub
         return null;
     }
