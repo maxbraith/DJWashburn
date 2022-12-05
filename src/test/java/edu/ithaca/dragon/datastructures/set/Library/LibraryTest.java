@@ -2,8 +2,6 @@ package edu.ithaca.dragon.datastructures.set.Library;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
-
 import edu.ithaca.dragon.datastructures.set.Song.Song;
 
 import org.junit.jupiter.api.Test;

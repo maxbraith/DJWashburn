@@ -2,7 +2,6 @@ package edu.ithaca.dragon.datastructures.set.Library;
 
 import java.util.ArrayList;
 
-import edu.ithaca.dragon.datastructures.set.CollectionOfPlaylists.CollectionOfPlaylists;
 import edu.ithaca.dragon.datastructures.set.Song.Song;
 
 public interface Library {
@@ -54,5 +53,9 @@ public interface Library {
      */
     Song shortestSongDuration();
 
+    /**
+     * @post song you are attempting to find in the library
+     * @return index of the song that is the parameter, -1 if not present
+     */
     public int contains1(Song song);
 }
