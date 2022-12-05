@@ -59,10 +59,6 @@ public class LibraryList implements Library{
         return songList.size();
     }
 
-    public CollectionOfPlaylists getPlaylists(){
-        return null;
-    }
-
     public String getArtist(Song song){
         return song.getArtist();
     }

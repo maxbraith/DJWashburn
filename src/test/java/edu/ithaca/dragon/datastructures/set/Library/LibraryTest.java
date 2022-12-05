@@ -65,7 +65,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void getSongTest(){
+    public void getSongAndSongInfoTest(){
         LibraryList library1 = new LibraryList();
         assertThrows(NoSuchElementException.class, ()-> library1.getSongFromList(0));
         library1.addSongs(testList.returnSongs());
@@ -76,5 +76,17 @@ public class LibraryTest {
         assertEquals(0, library1.getSongFromList(1).getNumTimesPlayed());
         library1.removeSongs(testList.returnSongs());
         assertThrows(NoSuchElementException.class, ()-> library1.getSongFromList(0));
+    }
+
+    @Test
+    public void shortestSongDurationTest(){
+        ArrayList<Song> singleSong = new ArrayList<>();
+        singleSong.add(new Song("Pop Smoke", "Remember", 180, 0));
+        LibraryList library1 = new LibraryList();
+        assertEquals(null, library1.shortestSongDuration());
+        library1.addSongs(singleSong);
+        assertEquals(singleSong.get(0), library1.shortestSongDuration());
+        library1.addSongs(testList.returnSongs());
+        assertEquals(testList.returnSongs().get(0), library1.shortestSongDuration());
     }
 }
