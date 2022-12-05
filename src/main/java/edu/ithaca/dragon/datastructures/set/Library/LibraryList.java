@@ -3,7 +3,6 @@ package edu.ithaca.dragon.datastructures.set.Library;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import edu.ithaca.dragon.datastructures.set.CollectionOfPlaylists.CollectionOfPlaylists;
 import edu.ithaca.dragon.datastructures.set.Song.Song;
 
 public class LibraryList implements Library{
@@ -20,7 +19,7 @@ public class LibraryList implements Library{
         ArrayList<String> allSongs = new ArrayList<>();
         String allSongsInString= "";
         for (int i =0; i<songList.size(); i++){
-            allSongs.add(songList.get(i).getArtist() + songList.get(i).getSongTitle());
+            allSongs.add(songList.get(i).getArtist() + ": " + songList.get(i).getSongTitle());
         }
         Collections.sort(allSongs);
         for (int i =0; i<allSongs.size(); i++){
@@ -35,7 +34,6 @@ public class LibraryList implements Library{
                 return (Song)songList.get(i);
             }
         }
-        //Made me add this return to avoid void error
         return null;
     }
 
@@ -47,11 +45,28 @@ public class LibraryList implements Library{
 
     public void removeSongs(ArrayList<Song> songsToRemoveList){
         for (int i =0; i<songsToRemoveList.size(); i++){
-            songList.remove(songsToRemoveList.get(i));
+            if (contains1(songsToRemoveList.get(i))==-1){
+                continue;
+            }
+            else{
+                songList.remove(contains1(songsToRemoveList.get(i)));
+            }
         }
     }
 
+    public int contains1(Song song){
+        for (int i=0; i<songList.size(); i++){
+            if (song.getArtist().equals(songList.get(i).getArtist())&&song.getSongTitle().equals(songList.get(i).getSongTitle())){
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public Song getSongFromList(int index){
+        if (index<0 || index>=songList.size()){
+            throw new IndexOutOfBoundsException();
+        }
         return songList.get(index);
     }
 
@@ -76,11 +91,11 @@ public class LibraryList implements Library{
     }
 
     public Song shortestSongDuration(){
-        if (songList.get(0)==null){
+        if (songList.size()==0 || songList==null){
             return null;
         }
         int duration1= songList.get(0).getDurationSeconds();
-        Song shortestSong= null;
+        Song shortestSong= songList.get(0);
         for (int i=0; i<songList.size(); i++){
             if (songList.get(i).getDurationSeconds()<duration1){
                 duration1 = songList.get(i).getDurationSeconds();

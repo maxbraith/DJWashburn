@@ -12,7 +12,7 @@ public class LibraryTest {
     @Test
     public void libraryTest() {
         allTests(new LibraryList());
-        allTests(new LibraryTreeMap());
+    //    allTests(new LibraryTreeMap());
     }
 
     public void allTests(Library test) {
@@ -22,41 +22,44 @@ public class LibraryTest {
         getListSizeTest(test);
         getSongAndSongInfoTest(test);
         shortestSongDurationTest(test);
+        contains1Test(test);
     }
 
     public void songsTest(Library library1){
         assertEquals("", library1.songs());
         library1.addSongs(testList.returnSongs());
-        assertEquals("A$AP Rocky L$D \n Chief Keef \n DaBaby Suge \n Drake Circo Loco \n Kanye West Ultralight Beam \n Kendrick Lamar Money Trees \n Playboi Carti Shoota \n Pop Smoke Element \n Pop Smoke Meet The Woo \n Post Malone Stay", library1.songs());
+        assertEquals("A$AP Rocky: L$D\nChief Keef: Love Sosa\nDaBaby: Suge\nDrake: Circo Loco\nKanye West: Ultralight Beam\nKendrick Lamar: Money Trees\nPlayboi Carti: Shoota\nPop Smoke: Element\nPop Smoke: Meet The Woo\nPost Malone: Stay\n", library1.songs());
     }
 
     public void songSearchTest(Library library1){
-        assertThrows(IllegalArgumentException.class, () -> library1.songSearch("Bob", "Jake"));
+        assertEquals(null,library1.songSearch("Bob", "Jake"));
         library1.addSongs(testList.returnSongs());
-        assertThrows(IllegalArgumentException.class, () -> library1.songSearch("Drill", "Pop Smoke"));
-        assertThrows(IllegalArgumentException.class, () -> library1.songSearch("Element", "Pop"));
-        assertThrows(IllegalArgumentException.class, () -> library1.songSearch("Pop Smoke", "Element"));
-        assertEquals("Pop Smoke", library1.songSearch("", "poP smoKe").getArtist());
-        assertEquals("Pop Smoke", library1.songSearch("", "Pop Smoke").getArtist());
-        assertEquals("DaBaby", library1.songSearch("", "DaBaby").getArtist());
-        assertEquals("Post Malone", library1.songSearch("", "Post Malone").getArtist());
-        assertEquals("Playboi Carti", library1.songSearch("", "Playboi Carti").getArtist());
-        assertEquals("Kendrick Lamar", library1.songSearch("", "Kendrick Lamar").getArtist());
-        assertEquals("Kanye West", library1.songSearch("", "Kanye West").getArtist());
-        assertEquals("Drake", library1.songSearch("", "Drake").getArtist());
-        assertEquals("Chief Keef", library1.songSearch("", "Chief Keef").getArtist());
-        assertEquals("A$AP Rocky", library1.songSearch("", "A$AP Rocky").getArtist());
-        assertThrows(IllegalArgumentException.class, () -> library1.songSearch("Drill", "Pop Smoke"));
-        assertThrows(IllegalArgumentException.class, () -> library1.songSearch("Element", "Pop"));
-        assertThrows(IllegalArgumentException.class, () -> library1.songSearch("Pop Smoke", "Element"));
+        assertEquals(null, library1.songSearch("Drill", "Pop Smoke"));
+        assertEquals(null, library1.songSearch("Element", "Pop"));
+        assertEquals(null, library1.songSearch("Pop Smoke", "Element"));
+        assertEquals("Pop Smoke", library1.songSearch("Meet The Woo", "poP smoKe").getArtist());
+        assertEquals("Pop Smoke", library1.songSearch("Element", "Pop Smoke").getArtist());
+        assertEquals("DaBaby", library1.songSearch("Suge", "DaBaby").getArtist());
+        assertEquals("Post Malone", library1.songSearch("Stay", "Post Malone").getArtist());
+        assertEquals("Playboi Carti", library1.songSearch("Shoota", "Playboi Carti").getArtist());
+        assertEquals("Kendrick Lamar", library1.songSearch("Money Trees", "Kendrick Lamar").getArtist());
+        assertEquals("Kanye West", library1.songSearch("Ultralight Beam", "Kanye West").getArtist());
+        assertEquals("Drake", library1.songSearch("Circo Loco", "Drake").getArtist());
+        assertEquals("Chief Keef", library1.songSearch("Love Sosa", "Chief Keef").getArtist());
+        assertEquals("A$AP Rocky", library1.songSearch("L$D", "A$AP Rocky").getArtist());
+        assertEquals(null,library1.songSearch("Drill", "Pop Smoke"));
+        assertEquals(null, library1.songSearch("Element", "Pop"));
+        assertEquals(null, library1.songSearch("Pop Smoke", "Element"));
+        library1.removeSongs(testList.returnSongs());
+        library1.removeSongs(testList.returnSongs());
     }
 
     public void addRemoveSongsTest(Library library1){
         assertEquals(0, library1.getListSize());
         library1.addSongs(testList.returnSongs());
-        assertEquals("A$AP Rocky L$D \n Chief Keef \n DaBaby Suge \n Drake Circo Loco \n Kanye West Ultralight Beam \n Kendrick Lamar Money Trees \n Playboi Carti Shoota \n Pop Smoke Element \n Pop Smoke Meet The Woo \n Post Malone Stay", library1.songs());
+        assertEquals("A$AP Rocky: L$D\nChief Keef: Love Sosa\nDaBaby: Suge\nDrake: Circo Loco\nKanye West: Ultralight Beam\nKendrick Lamar: Money Trees\nPlayboi Carti: Shoota\nPop Smoke: Element\nPop Smoke: Meet The Woo\nPost Malone: Stay\n", library1.songs());
         library1.removeSongs(new ArrayList<Song>());
-        assertEquals("A$AP Rocky L$D \n Chief Keef \n DaBaby Suge \n Drake Circo Loco \n Kanye West Ultralight Beam \n Kendrick Lamar Money Trees \n Playboi Carti Shoota \n Pop Smoke Element \n Pop Smoke Meet The Woo \n Post Malone Stay", library1.songs());
+        assertEquals("A$AP Rocky: L$D\nChief Keef: Love Sosa\nDaBaby: Suge\nDrake: Circo Loco\nKanye West: Ultralight Beam\nKendrick Lamar: Money Trees\nPlayboi Carti: Shoota\nPop Smoke: Element\nPop Smoke: Meet The Woo\nPost Malone: Stay\n", library1.songs());
         library1.removeSongs(testList.returnSongs());
         assertEquals("", library1.songs());
     }
@@ -70,15 +73,15 @@ public class LibraryTest {
     }
 
     public void getSongAndSongInfoTest(Library library1){
-        assertThrows(NoSuchElementException.class, ()-> library1.getSongFromList(0));
+        assertThrows(IndexOutOfBoundsException.class, ()-> library1.getSongFromList(0));
         library1.addSongs(testList.returnSongs());
-        assertThrows(NoSuchElementException.class, ()-> library1.getSongFromList(23));
+        assertThrows(IndexOutOfBoundsException.class, ()-> library1.getSongFromList(23));
         assertEquals("Shoota", library1.getSongFromList(0).getSongTitle());
         assertEquals("DaBaby", library1.getSongFromList(4).getArtist());
         assertEquals(360, library1.getSongFromList(9).getDurationSeconds());
         assertEquals(0, library1.getSongFromList(1).getNumTimesPlayed());
         library1.removeSongs(testList.returnSongs());
-        assertThrows(NoSuchElementException.class, ()-> library1.getSongFromList(0));
+        assertThrows(IndexOutOfBoundsException.class, ()-> library1.getSongFromList(0));
     }
 
     public void shortestSongDurationTest(Library library1){
@@ -88,6 +91,27 @@ public class LibraryTest {
         library1.addSongs(singleSong);
         assertEquals(singleSong.get(0), library1.shortestSongDuration());
         library1.addSongs(testList.returnSongs());
-        assertEquals(testList.returnSongs().get(0), library1.shortestSongDuration());
+        assertEquals(testList.returnSongs().get(0).getDurationSeconds(), library1.shortestSongDuration().getDurationSeconds());
+        library1.removeSongs(singleSong);
+    }
+
+    public void contains1Test(Library library1){
+        library1.removeSongs(testList.returnSongs());
+        assertEquals(0, library1.getListSize());
+        assertEquals(-1, library1.contains1(new Song("Pop Smoke", "Scenario", 200, 0)));
+        ArrayList<Song> singleSong = new ArrayList<>();
+        singleSong.add(new Song("Pop Smoke", "Remember", 180, 0));
+        library1.addSongs(singleSong);
+        assertEquals(0, library1.contains1(singleSong.get(0)));
+        assertEquals(-1, library1.contains1(new Song("Snoop Dogg", "Still D.R.E.", 450, 0)));
+        library1.addSongs(testList.returnSongs());
+        assertEquals(4, library1.contains1(testList.returnSongs().get(3)));
+        library1.removeSongs(singleSong);
+        assertEquals(-1, library1.contains1(singleSong.get(0)));
+        library1.removeSongs(testList.returnSongs());
+        for (int i=0; i<testList.returnSongs().size(); i++){
+            assertEquals(-1, library1.contains1(testList.returnSongs().get(i)));
+        }
+        assertEquals(0, library1.getListSize());
     }
 }

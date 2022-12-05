@@ -53,4 +53,6 @@ public interface Library {
      * @return null if the library is empty
      */
     Song shortestSongDuration();
+
+    public int contains1(Song song);
 }
