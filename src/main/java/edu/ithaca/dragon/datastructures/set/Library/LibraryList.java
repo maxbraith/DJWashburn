@@ -80,7 +80,10 @@ public class LibraryList implements Library{
     }
 
     public Song shortestSongDuration(){
-        int duration1= 100000000;
+        if (songList.get(0)==null){
+            return null;
+        }
+        int duration1= songList.get(0).getDurationSeconds();
         Song shortestSong= null;
         for (int i=0; i<songList.size(); i++){
             if (songList.get(i).getDurationSeconds()<duration1){
