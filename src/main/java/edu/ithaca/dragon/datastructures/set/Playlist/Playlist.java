@@ -66,6 +66,9 @@ public interface Playlist {
     public String getName();
 
 
+    /**
+     * @post removes the latest song that was added to the playlist
+     */
     public void removeLatest();
 
 }
