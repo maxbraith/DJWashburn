@@ -9,18 +9,28 @@ public class LibraryTest {
 
     @Test
     public void libraryTest() {
-        allTests(new LibraryList());
-    //    allTests(new LibraryTreeMap());
+        allTestsList(new LibraryList());
+        //allTestsMap(new LibraryTreeMap());
     }
 
-    public void allTests(Library test) {
+    public void allTestsList(LibraryList test) {
         songsTest(test);
         songSearchTest(test);
         addRemoveSongsTest(test);
         getListSizeTest(test);
-        getSongAndSongInfoTest(test);
+        getSongAndSongInfoTestForList(test);
         shortestSongDurationTest(test);
-        contains1Test(test);
+        containsIntTest(test);
+    }
+
+    public void allTestsMap(LibraryTreeMap test) {
+        songsTest(test);
+        songSearchTest(test);
+        addRemoveSongsTest(test);
+        getListSizeTest(test);
+        getSongAndSongInfoTestForTreeMap(test);
+        shortestSongDurationTest(test);
+        containsBooleanTest(test);
     }
 
     public void songsTest(Library library1){
@@ -70,7 +80,7 @@ public class LibraryTest {
         assertEquals(0, library1.getListSize());
     }
 
-    public void getSongAndSongInfoTest(Library library1){
+    public void getSongAndSongInfoTestForList(LibraryList library1){
         assertThrows(IndexOutOfBoundsException.class, ()-> library1.getSongFromList(0));
         library1.addSongs(testList.returnSongs());
         assertThrows(IndexOutOfBoundsException.class, ()-> library1.getSongFromList(23));
@@ -80,6 +90,10 @@ public class LibraryTest {
         assertEquals(0, library1.getSongFromList(1).getNumTimesPlayed());
         library1.removeSongs(testList.returnSongs());
         assertThrows(IndexOutOfBoundsException.class, ()-> library1.getSongFromList(0));
+    }
+
+    public void getSongAndSongInfoTestForTreeMap(LibraryTreeMap library1){
+        //max copy paste and change above tests to work with yours
     }
 
     public void shortestSongDurationTest(Library library1){
@@ -93,23 +107,27 @@ public class LibraryTest {
         library1.removeSongs(singleSong);
     }
 
-    public void contains1Test(Library library1){
+    public void containsIntTest(LibraryList library1){
         library1.removeSongs(testList.returnSongs());
         assertEquals(0, library1.getListSize());
-        assertEquals(-1, library1.contains1(new Song("Pop Smoke", "Scenario", 200, 0)));
+        assertEquals(-1, library1.containsInt(new Song("Pop Smoke", "Scenario", 200, 0)));
         ArrayList<Song> singleSong = new ArrayList<>();
         singleSong.add(new Song("Pop Smoke", "Remember", 180, 0));
         library1.addSongs(singleSong);
-        assertEquals(0, library1.contains1(singleSong.get(0)));
-        assertEquals(-1, library1.contains1(new Song("Snoop Dogg", "Still D.R.E.", 450, 0)));
+        assertEquals(0, library1.containsInt(singleSong.get(0)));
+        assertEquals(-1, library1.containsInt(new Song("Snoop Dogg", "Still D.R.E.", 450, 0)));
         library1.addSongs(testList.returnSongs());
-        assertEquals(4, library1.contains1(testList.returnSongs().get(3)));
+        assertEquals(4, library1.containsInt(testList.returnSongs().get(3)));
         library1.removeSongs(singleSong);
-        assertEquals(-1, library1.contains1(singleSong.get(0)));
+        assertEquals(-1, library1.containsInt(singleSong.get(0)));
         library1.removeSongs(testList.returnSongs());
         for (int i=0; i<testList.returnSongs().size(); i++){
-            assertEquals(-1, library1.contains1(testList.returnSongs().get(i)));
+            assertEquals(-1, library1.containsInt(testList.returnSongs().get(i)));
         }
         assertEquals(0, library1.getListSize());
+    }
+
+    public void containsBooleanTest(LibraryTreeMap library){
+        //max this is the test for your contains - copy paste and change above contains test to be able to work for yours
     }
 }

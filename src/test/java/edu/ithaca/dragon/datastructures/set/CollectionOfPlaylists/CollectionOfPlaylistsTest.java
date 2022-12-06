@@ -113,9 +113,9 @@ public class CollectionOfPlaylistsTest {
         collection.createEmptyPlaylist("Bob");
         assertEquals("", collection.returnSongsInPlaylist("Jeff"));
         collection.createRandomPlaylist(100, "Jeff");
-        assertEquals("Shoota\n", collection.returnSongsInPlaylist("Jeff"));
+        assertEquals("Playboi Carti: Shoota\n", collection.returnSongsInPlaylist("Jeff"));
         collection.getPlaylist(1).addSong(new Song("Pop Smoke", "Element", 120, 0));
-        assertEquals("Shoota\nElement\n", collection.returnSongsInPlaylist("Jeff"));
+        assertEquals("Playboi Carti: Shoota\nPop Smoke: Element\n", collection.returnSongsInPlaylist("Jeff"));
     }
 
     @Test

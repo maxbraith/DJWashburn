@@ -46,4 +46,8 @@ public interface Library {
      */
     Song shortestSongDuration();
 
+    public String getArtist(Song song);
+    public String getSongTitle(Song song);
+    public int getDurationSeconds(Song song);
+    public int getNumTimesPlayed(Song song);
 }

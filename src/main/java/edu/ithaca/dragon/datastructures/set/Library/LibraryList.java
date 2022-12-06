@@ -54,15 +54,6 @@ public class LibraryList implements Library{
         }
     }
 
-    public boolean contains1(Song song){
-        for (int i=0; i<songList.size(); i++){
-            if (song.getArtist().equals(songList.get(i).getArtist())&&song.getSongTitle().equals(songList.get(i).getSongTitle())){
-                return true;
-            }
-        }
-        return false;
-    }
-
     public int containsInt(Song song){
         for (int i=0; i<songList.size(); i++){
             if (song.getArtist().equals(songList.get(i).getArtist())&&song.getSongTitle().equals(songList.get(i).getSongTitle())){
@@ -71,13 +62,7 @@ public class LibraryList implements Library{
         }
         return -1;
     }
-
-
-    public Song getSongFromList(String key) {
-        return null;
-    }
-
-    
+   
     public Song getSongFromList(int index){
         if (index<0 || index>=songList.size()){
             throw new IndexOutOfBoundsException();
