@@ -19,6 +19,9 @@ public class PlaylistTest {
         addAndRemoveSongTest(test);
         playNextTest(test);
         checkEmptyTest(test);
+        removeLatestTest(test);
+        getAllSongsTest(test);
+        containsIndexAndBooleanTest(test);
     }
 
     public ArrayList<Song> listOfSongs() {
@@ -42,7 +45,7 @@ public class PlaylistTest {
         }
 
         for (Song song : listOfSongs()) {
-            assertTrue(test.contains1(song));
+            assertTrue(test.containsReturnBoolean(song));
         }
 
         for (Song song : listOfSongs()) {
@@ -60,7 +63,7 @@ public class PlaylistTest {
         }
 
         for (Song song : listOfSongs()) {
-            assertTrue(test.contains1(song));
+            assertTrue(test.containsReturnBoolean(song));
         }
 
         for (Song song : listOfSongs()) {
@@ -80,5 +83,60 @@ public class PlaylistTest {
             test.removeSong(song);
         }
         assertTrue(test.checkEmpty());
+    }
+
+    public void removeLatestTest(Playlist test){
+        test.removeLatest();
+        test.addSong(new Song("Bing Crosby", "White Christmas", 100, 0));
+        assertTrue(test.returnDurationSeconds()==100);
+        test.removeLatest();
+        assertTrue(test.returnDurationSeconds()==0);
+        test.addSong(new Song("Drake", "Passion Fruit", 200, 5));
+        test.addSong(new Song("Low", "Flo Rida", 100, 12));
+        assertTrue(test.returnDurationSeconds()==300);
+        test.removeLatest();
+        assertTrue(test.returnDurationSeconds()==200);
+        test.addSong(new Song("Bing Crosby", "White Christmas", 100, 0));
+        test.addSong(new Song("Low", "Flo Rida", 100, 12));
+        assertTrue(test.returnDurationSeconds()==400);
+        test.removeLatest();
+        assertTrue(test.returnDurationSeconds()==300);
+        test.removeLatest();
+        test.removeLatest();
+        assertTrue(test.checkEmpty());
+    }
+
+    public void getAllSongsTest(Playlist test){
+        assertEquals("", test.getAllSongs());
+        test.addSong(new Song("Flo Rida", "Low", 100, 12));
+        assertEquals("Flo Rida: Low\n", test.getAllSongs());
+        test.addSong(new Song("Bing Crosby", "White Christmas", 100, 0));
+        assertEquals("Flo Rida: Low\nBing Crosby: White Christmas\n", test.getAllSongs());
+        test.addSong(new Song("Drake", "Passion Fruit", 200, 5));
+        assertEquals("Flo Rida: Low\nBing Crosby: White Christmas\nDrake: Passion Fruit\n", test.getAllSongs());
+        test.removeLatest();
+        test.removeLatest();
+        test.removeLatest();
+        assertEquals("", test.getAllSongs());
+    }
+
+    public void containsIndexAndBooleanTest(Playlist test){
+        assertEquals(-1, test.containsReturnIndex(new Song("Drake", "Passion Fruit", 200, 5)));
+        assertFalse(test.containsReturnBoolean(new Song("Drake", "Passion Fruit", 200, 5)));
+        test.addSong(new Song("Bing Crosby", "White Christmas", 100, 0));
+        assertEquals(-1, test.containsReturnIndex(new Song("Drake", "Passion Fruit", 200, 5)));
+        assertFalse(test.containsReturnBoolean(new Song("Drake", "Passion Fruit", 200, 5)));
+        assertEquals(0, test.containsReturnIndex(new Song("Bing Crosby", "White Christmas", 200, 5)));
+        assertTrue(test.containsReturnBoolean(new Song("Bing Crosby", "White Christmas", 200, 5)));
+        test.addSong(new Song("Drake", "Passion Fruit", 200, 5));
+        assertEquals(1, test.containsReturnIndex(new Song("Drake", "Passion Fruit", 200, 5)));
+        assertTrue(test.containsReturnBoolean(new Song("Drake", "Passion Fruit", 200, 5)));
+        assertEquals(-1, test.containsReturnIndex(new Song("Drake", "Gods Plan", 200, 5)));
+        assertFalse(test.containsReturnBoolean(new Song("Marshmello", "Passion Fruit", 200, 5)));
+        test.addSong(new Song("Flo Rida", "Low", 100, 12));
+        assertEquals(2, test.containsReturnIndex(new Song("Flo Rida", "Low", 200, 5)));
+        assertTrue(test.containsReturnBoolean(new Song("Flo Rida", "Low", 200, 5)));
+        assertEquals(-1, test.containsReturnIndex(new Song("NLE Choppa", "Shotta Flow", 200, 5)));
+        assertFalse(test.containsReturnBoolean(new Song("NLE Choppa", "Shotta Flow", 200, 5)));
     }
 }

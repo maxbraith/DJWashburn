@@ -19,24 +19,26 @@ public class PlaylistList implements Playlist{
     }
 
     public void removeSong(Song song){
-        removeSong1((Song)song);
-    }
-    public void removeSong1(Song song){
-        if (contains1(song)){
+        if (containsReturnBoolean(song)){
             durationSeconds-=song.getDurationSeconds();
-            songs.remove(contains2(song));  
+            songs.remove(containsReturnIndex(song));  
         }  
     }
 
     public void removeLatest(){
-        durationSeconds-=songs.get(songs.size()-1).getDurationSeconds();
-        songs.remove(songs.size()-1);
+        if (songs.size()==0){
+            return;
+        }
+        else{
+            durationSeconds-=songs.get(songs.size()-1).getDurationSeconds();
+            songs.remove(songs.size()-1);
+        }
     }
 
     public String getAllSongs(){
         String allSongs = "";
         for (int i=0; i<songs.size(); i++){
-            allSongs = allSongs + songs.get(i).getSongTitle() +"\n";
+            allSongs = allSongs + songs.get(i).getArtist() + ": " +songs.get(i).getSongTitle() +"\n";
         }
         return allSongs;
     }
@@ -59,25 +61,22 @@ public class PlaylistList implements Playlist{
     }
 
     public void addSong(Song song){
-        addSong1((Song)song);
-    }
-    public void addSong1(Song song){
         songs.add(song);
         durationSeconds+=song.getDurationSeconds();
     }
 
-    public boolean contains1(Song songToCheck){
+    public boolean containsReturnBoolean(Song songToCheck){
         for (int i=0; i<songs.size(); i++){
-            if (songToCheck.getSongTitle().equals(songs.get(i).getSongTitle())){
+            if (songToCheck.getSongTitle().equals(songs.get(i).getSongTitle())&&songToCheck.getArtist().equals(songs.get(i).getArtist())){
                 return true;
             }
         }
         return false;
     }
 
-    public int contains2(Song songToCheck){
+    public int containsReturnIndex(Song songToCheck){
         for (int i=0; i<songs.size(); i++){
-            if (songToCheck.getSongTitle().equals(songs.get(i).getSongTitle())){
+            if (songToCheck.getSongTitle().equals(songs.get(i).getSongTitle())&&songToCheck.getArtist().equals(songs.get(i).getArtist())){
                 return i;
             }
         }
