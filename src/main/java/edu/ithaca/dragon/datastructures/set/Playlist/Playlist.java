@@ -50,7 +50,7 @@ public interface Playlist {
      * @throws Exception if song is not valid
      * @return true or false based on whether or not song is in the playlist
      */
-    public boolean contains(Song songToCheck);
+    public boolean contains1(Song songToCheck);
 
     /**
      * 

@@ -22,9 +22,9 @@ public class PlaylistList implements Playlist{
         removeSong1((Song)song);
     }
     public void removeSong1(Song song){
-        if (songs.contains(song)){
+        if (contains1(song)){
             durationSeconds-=song.getDurationSeconds();
-            songs.remove(song);  
+            songs.remove(contains2(song));  
         }  
     }
 
@@ -48,8 +48,8 @@ public class PlaylistList implements Playlist{
     public String playNext(){
         String info = "";
         info = songs.get(0).getSongTitle() + " by " +songs.get(0).getArtist();
-        songs.remove(0);
         durationSeconds-=songs.get(0).getDurationSeconds();
+        songs.remove(0);
         return info;
     }
 
@@ -66,13 +66,22 @@ public class PlaylistList implements Playlist{
         durationSeconds+=song.getDurationSeconds();
     }
 
-    public boolean contains(Song songToCheck){
+    public boolean contains1(Song songToCheck){
         for (int i=0; i<songs.size(); i++){
             if (songToCheck.getSongTitle().equals(songs.get(i).getSongTitle())){
                 return true;
             }
         }
         return false;
+    }
+
+    public int contains2(Song songToCheck){
+        for (int i=0; i<songs.size(); i++){
+            if (songToCheck.getSongTitle().equals(songs.get(i).getSongTitle())){
+                return i;
+            }
+        }
+        return -1;
     }
 
     public String getName(){

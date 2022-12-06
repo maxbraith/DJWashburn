@@ -42,7 +42,7 @@ public class PlaylistTest {
         }
 
         for (Song song : listOfSongs()) {
-            assertTrue(test.contains(song));
+            assertTrue(test.contains1(song));
         }
 
         for (Song song : listOfSongs()) {
@@ -60,7 +60,7 @@ public class PlaylistTest {
         }
 
         for (Song song : listOfSongs()) {
-            assertTrue(test.contains(song));
+            assertTrue(test.contains1(song));
         }
 
         for (Song song : listOfSongs()) {
