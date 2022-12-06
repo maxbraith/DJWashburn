@@ -51,13 +51,21 @@ public interface Playlist {
      * @return true or false based on whether or not song is in the playlist
      */
     public boolean containsReturnBoolean(Song songToCheck);
+
+    /**
+     * @pre song must be valid
+     * @param song to check if is in the playlist
+     * @throws Exception if song is not valid
+     * @return true or false based on whether or not song is in the playlist
+     */
     public int containsReturnIndex(Song songToCheck);
 
     /**
-     * 
      * @return name of playlist
      */
     public String getName();
+
+
     public void removeLatest();
 
 }

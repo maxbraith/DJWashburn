@@ -42,7 +42,7 @@ public class CollectionOfPlaylistsList implements CollectionOfPlaylists {
         playlistToCreate.addSong(library.shortestSongDuration());
         while (playlistToCreate.returnDurationSeconds()<=requestedDurationSeconds){
            int randIndex = rand.nextInt(library.getListSize());
-           if (playlistToCreate.contains(library.getSongFromList(randIndex))==false)
+           if (playlistToCreate.containsReturnBoolean(library.getSongFromList(randIndex))==false)
            playlistToCreate.addSong(library.getSongFromList(randIndex));
         }
         if (playlistToCreate.getSize()>1){
