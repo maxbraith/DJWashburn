@@ -6,7 +6,7 @@ import edu.ithaca.dragon.datastructures.set.Song.Song;
 
 public class testList {
 
-     //author Giovanni
+     //author Giovanni - for testing purposes
 
     public static ArrayList<Song> returnSongs(){
         ArrayList<Song> songs = new ArrayList<>();

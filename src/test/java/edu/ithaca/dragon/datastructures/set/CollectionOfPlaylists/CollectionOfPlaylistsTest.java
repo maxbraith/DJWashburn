@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 public class CollectionOfPlaylistsTest {
 
-     //author Giovanni
+     //author Giovanni - tests methods of collection of playlists
      
     @Test
     public void createEmptyPlaylistTest(){

@@ -7,7 +7,7 @@ import edu.ithaca.dragon.datastructures.set.Song.Song;
 import org.junit.jupiter.api.Test;
 public class LibraryTest {
 
-    //author Giovanni
+    //author Giovanni - tests methods of library
     
     @Test
     public void libraryTest() {

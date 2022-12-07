@@ -20,14 +20,14 @@ public class Song {
 
     public boolean equals(String songTitle, String artist){
         if (this.songTitle.equalsIgnoreCase(songTitle) && this.getArtist().equalsIgnoreCase(artist)){
-            return true;
+            return true; //if song title and artist equal param's then returns true else false
         }
         else{
             return false;
         }
     }
 
-    public String getInfo() {
+    public String getInfo() { //returns info about song
         return "Artist: " + this.artist + "; Song Title: " + this.songTitle + "; Duration: " + this.durationSeconds + ";";
     }
 
