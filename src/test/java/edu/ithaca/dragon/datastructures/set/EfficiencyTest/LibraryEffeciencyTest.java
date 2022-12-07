@@ -14,20 +14,22 @@ public class LibraryEffeciencyTest {
     public void libraryEffeciency() {
         System.out.println("-------LibraryList-------");
         allTests(new LibraryList());
+        containsLibraryListEfficiency(new LibraryList(), 3000);
+        getSongFromLibraryListEfficiency(new LibraryList(), 3000);
         System.out.println("\n-------ListTreeMap-------");
         allTests(new LibraryTreeMap());
+        containsLibraryTreeEfficiency(new LibraryTreeMap(), 3000);
+        getSongFromLibraryTreeEfficiency(new LibraryTreeMap(), 3000);
     }
 
     public void allTests(Library test) {
-        int multiplier = 5000;
+        int multiplier = 30000;
         //addEfficiency(test, multiplier);
         //removeEfficiency(test, multiplier);
         //songListEfficiency(test, multiplier);
         //songSearchEfficiency(test,multiplier);
         //getListSizeEfficiency(test, multiplier);
-        //getSongFromListEfficiency(test,multiplier);
         //shortestSongEfficiency(test, multiplier);
-        containsEfficiency(test, multiplier);
     }
 
     public void addEfficiency(Library test, int multiplier) {
@@ -115,23 +117,6 @@ public class LibraryEffeciencyTest {
         }
     }
 
-    public void getSongFromListEfficiency(Library test, int multiplier) {
-        System.out.println("\n-----getSongFromList()-----");
-        System.out.println("Num of Items\tTime");
-        for (int i = 1; i < 50; i++) {
-            int k = i * multiplier;
-            ArrayList<Song> list = new ArrayList<Song>();
-            for (int j = 1; j < k; j++) {
-                list.add(new Song(Integer.toString(k), Integer.toString(k), k, k));
-            }
-            test.addSongs(list);
-            long start = System.nanoTime();
-            test.getSongFromList(k/2);
-            long end = System.nanoTime();
-            System.out.println(k + "\t" + (end - start));
-        }
-    }
-
     public void shortestSongEfficiency(Library test, int multiplier) {
         System.out.println("\n-----shortestSongDuration()-----");
         System.out.println("Num of Items\tTime");
@@ -149,7 +134,7 @@ public class LibraryEffeciencyTest {
         }
     }
 
-    public void containsEfficiency(Library test, int multiplier) {
+    public void containsLibraryTreeEfficiency(LibraryTreeMap test, int multiplier) {
         System.out.println("\n-----Contains()-----");
         System.out.println("Num of Items\tTime");
         for (int i = 0; i < 50; i++) {
@@ -161,6 +146,57 @@ public class LibraryEffeciencyTest {
             test.addSongs(list);
             long start = System.nanoTime();
             test.contains1(new Song(Integer.toString(k), Integer.toString(k), k, k));
+            long end = System.nanoTime();
+            System.out.println(k + "\t" + (end - start));
+        }
+    }
+
+    public void containsLibraryListEfficiency(LibraryList test, int multiplier) {
+        System.out.println("\n-----Contains()-----");
+        System.out.println("Num of Items\tTime");
+        for (int i = 0; i < 50; i++) {
+            int k = i * multiplier;
+            ArrayList<Song> list = new ArrayList<Song>();
+            for (int j = 0; j < k; j++) {
+                list.add(new Song(Integer.toString(k), Integer.toString(k), k, k));
+            }
+            test.addSongs(list);
+            long start = System.nanoTime();
+            test.containsInt(new Song(Integer.toString(k), Integer.toString(k), k, k));
+            long end = System.nanoTime();
+            System.out.println(k + "\t" + (end - start));
+        }
+    }
+
+    public void getSongFromLibraryTreeEfficiency(LibraryTreeMap test, int multiplier) {
+        System.out.println("\n-----getSongFromList()-----");
+        System.out.println("Num of Items\tTime");
+        for (int i = 1; i < 50; i++) {
+            int k = i * multiplier;
+            ArrayList<Song> list = new ArrayList<Song>();
+            for (int j = 1; j < k; j++) {
+                list.add(new Song(Integer.toString(k), Integer.toString(k), k, k));
+            }
+            test.addSongs(list);
+            long start = System.nanoTime();
+            test.getSongFromList(k - 12 + ", " + (k - 12));
+            long end = System.nanoTime();
+            System.out.println(k + "\t" + (end - start));
+        }
+    }
+
+    public void getSongFromLibraryListEfficiency(LibraryList test, int multiplier) {
+        System.out.println("\n-----getSongFromList()-----");
+        System.out.println("Num of Items\tTime");
+        for (int i = 1; i < 50; i++) {
+            int k = i * multiplier;
+            ArrayList<Song> list = new ArrayList<Song>();
+            for (int j = 1; j < k; j++) {
+                list.add(new Song(Integer.toString(k), Integer.toString(k), k, k));
+            }
+            test.addSongs(list);
+            long start = System.nanoTime();
+            test.getSongFromList(k-12);
             long end = System.nanoTime();
             System.out.println(k + "\t" + (end - start));
         }
