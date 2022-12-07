@@ -16,7 +16,7 @@ public class LibraryTreeMap implements Library {
       }
       return songString;
   }
-  public Song getSongFromList(String songID) {
+  public Song getSongFromID(String songID) {
     if(contains2(songID) == true){
       return songMap.get(songID);
     }
@@ -50,7 +50,7 @@ public class LibraryTreeMap implements Library {
   public Song songSearch(String songTitle, String artist) {
        if(contains2(artist + ", "+ songTitle)==true){
             if ((songMap.get(artist + ", " + songTitle).getArtist().equalsIgnoreCase(artist))&&(songMap.get(artist + ", " + songTitle).getSongTitle().equalsIgnoreCase(songTitle))){
-                return getSongFromList(artist + ", " + songTitle);
+                return getSongFromID(artist + ", " + songTitle);
             }
         }
        return null;
@@ -100,6 +100,10 @@ public int getNumTimesPlayed(Song song) {
 @Override
 public void removeAll(){
     songMap = new TreeMap<String, Song>();
+}
+
+public Song getSongFromList(int i){
+    return null;
 }
  
  

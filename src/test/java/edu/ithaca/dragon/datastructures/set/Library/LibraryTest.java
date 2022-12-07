@@ -95,16 +95,16 @@ public class LibraryTest {
     }
 
     public void getSongAndSongInfoTestForTreeMap(LibraryTreeMap library1){
-        assertThrows(IndexOutOfBoundsException.class, ()-> library1.getSongFromList("Pop Smoke, Meet The Woo"));
+        assertThrows(IndexOutOfBoundsException.class, ()-> library1.getSongFromID("Pop Smoke, Meet The Woo"));
         library1.addSongs(testList.returnSongs());
-        assertThrows(IndexOutOfBoundsException.class, ()-> library1.getSongFromList("None"));
-        assertEquals("Shoota", library1.getSongFromList("Playboi Carti, Shoota").getSongTitle());
-        assertEquals("DaBaby", library1.getSongFromList("DaBaby, Suge").getArtist());
+        assertThrows(IndexOutOfBoundsException.class, ()-> library1.getSongFromID("None"));
+        assertEquals("Shoota", library1.getSongFromID("Playboi Carti, Shoota").getSongTitle());
+        assertEquals("DaBaby", library1.getSongFromID("DaBaby, Suge").getArtist());
         library1.addSong(new Song("Pop Smoke", "Remember", 180, 0));
-        assertEquals(180, library1.getSongFromList("Pop Smoke, Remember").getDurationSeconds());
-        assertEquals(0, library1.getSongFromList("Pop Smoke, Remember").getNumTimesPlayed());
+        assertEquals(180, library1.getSongFromID("Pop Smoke, Remember").getDurationSeconds());
+        assertEquals(0, library1.getSongFromID("Pop Smoke, Remember").getNumTimesPlayed());
         library1.removeSongs(testList.returnSongs());
-        assertThrows(IndexOutOfBoundsException.class, ()-> library1.getSongFromList("Pop Smoke, Meet The Woo"));
+        assertThrows(IndexOutOfBoundsException.class, ()-> library1.getSongFromID("Pop Smoke, Meet The Woo"));
     }
 
     public void shortestSongDurationTest(Library library1){

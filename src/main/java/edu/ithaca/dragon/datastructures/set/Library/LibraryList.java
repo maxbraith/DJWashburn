@@ -111,4 +111,8 @@ public class LibraryList implements Library{
         
     }
 
+    public Song getSongFromID(String songID){
+        return null;
+    }
+
 }

@@ -179,7 +179,7 @@ public class LibraryEffeciencyTest {
             }
             test.addSongs(list);
             long start = System.nanoTime();
-            test.getSongFromList(k - 12 + ", " + (k - 12));
+            test.getSongFromID(k - 12 + ", " + (k - 12));
             long end = System.nanoTime();
             System.out.println(k + "\t" + (end - start));
         }
