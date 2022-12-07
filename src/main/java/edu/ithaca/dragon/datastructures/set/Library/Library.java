@@ -65,4 +65,6 @@ public interface Library {
      * @return number of times a song has played
      */
     public int getNumTimesPlayed(Song song);
+
+    public void removeAll();
 }

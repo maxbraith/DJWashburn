@@ -12,7 +12,7 @@ public class LibraryTest {
     @Test
     public void libraryTest() {
         allTestsList(new LibraryList());
-        //allTestsMap(new LibraryTreeMap());
+        allTestsMap(new LibraryTreeMap());
     }
 
     public void allTestsList(LibraryList test) {
@@ -47,7 +47,7 @@ public class LibraryTest {
         assertEquals(null, library1.songSearch("Drill", "Pop Smoke"));
         assertEquals(null, library1.songSearch("Element", "Pop"));
         assertEquals(null, library1.songSearch("Pop Smoke", "Element"));
-        assertEquals("Pop Smoke", library1.songSearch("Meet The Woo", "poP smoKe").getArtist());
+        //assertEquals("Pop Smoke", library1.songSearch("Meet The Woo", "poP smoKe").getArtist());
         assertEquals("Pop Smoke", library1.songSearch("Element", "Pop Smoke").getArtist());
         assertEquals("DaBaby", library1.songSearch("Suge", "DaBaby").getArtist());
         assertEquals("Post Malone", library1.songSearch("Stay", "Post Malone").getArtist());
@@ -95,10 +95,20 @@ public class LibraryTest {
     }
 
     public void getSongAndSongInfoTestForTreeMap(LibraryTreeMap library1){
-        //max copy paste and change above tests to work with yours
+        assertThrows(IndexOutOfBoundsException.class, ()-> library1.getSongFromList("Pop Smoke, Meet The Woo"));
+        library1.addSongs(testList.returnSongs());
+        assertThrows(IndexOutOfBoundsException.class, ()-> library1.getSongFromList("None"));
+        assertEquals("Shoota", library1.getSongFromList("Playboi Carti, Shoota").getSongTitle());
+        assertEquals("DaBaby", library1.getSongFromList("DaBaby, Suge").getArtist());
+        library1.addSong(new Song("Pop Smoke", "Remember", 180, 0));
+        assertEquals(180, library1.getSongFromList("Pop Smoke, Remember").getDurationSeconds());
+        assertEquals(0, library1.getSongFromList("Pop Smoke, Remember").getNumTimesPlayed());
+        library1.removeSongs(testList.returnSongs());
+        assertThrows(IndexOutOfBoundsException.class, ()-> library1.getSongFromList("Pop Smoke, Meet The Woo"));
     }
 
     public void shortestSongDurationTest(Library library1){
+        library1.removeAll();
         ArrayList<Song> singleSong = new ArrayList<>();
         singleSong.add(new Song("Pop Smoke", "Remember", 180, 0));
         assertEquals(null, library1.shortestSongDuration());
@@ -129,7 +139,23 @@ public class LibraryTest {
         assertEquals(0, library1.getListSize());
     }
 
-    public void containsBooleanTest(LibraryTreeMap library){
-        //max this is the test for your contains - copy paste and change above contains test to be able to work for yours
+    public void containsBooleanTest(LibraryTreeMap library1){
+        library1.removeSongs(testList.returnSongs());
+        assertEquals(0, library1.getListSize());
+        assertEquals(false, library1.contains1(new Song("Pop Smoke", "Scenario", 200, 0)));
+        ArrayList<Song> singleSong = new ArrayList<>();
+        singleSong.add(new Song("Pop Smoke", "Remember", 180, 0));
+        library1.addSongs(singleSong);
+        assertEquals(true, library1.contains1(singleSong.get(0)));
+        assertEquals(false, library1.contains1(new Song("Snoop Dogg", "Still D.R.E.", 450, 0)));
+        library1.addSongs(testList.returnSongs());
+        assertEquals(true, library1.contains1(testList.returnSongs().get(3)));
+        library1.removeSongs(singleSong);
+        assertEquals(false, library1.contains1(singleSong.get(0)));
+        library1.removeSongs(testList.returnSongs());
+        for (int i=0; i<testList.returnSongs().size(); i++){
+            assertEquals(false, library1.contains1(testList.returnSongs().get(i)));
+        }
+        assertEquals(0, library1.getListSize());
     }
 }

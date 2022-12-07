@@ -17,7 +17,12 @@ public class LibraryTreeMap implements Library {
       return songString;
   }
   public Song getSongFromList(String songID) {
+    if(contains2(songID) == true){
       return songMap.get(songID);
+    }
+    else{
+        throw new IndexOutOfBoundsException();
+    }
   }
   @Override
   public void addSongs(ArrayList<Song> listOfSongs) {
@@ -25,6 +30,9 @@ public class LibraryTreeMap implements Library {
           songMap.put(listOfSongs.get(i).getId(), listOfSongs.get(i));
       }
     
+  }
+  public void addSong(Song song){
+    songMap.put(song.getId(), song);
   }
   @Override
   public void removeSongs(ArrayList<Song> listOfSongs) {
@@ -40,9 +48,11 @@ public class LibraryTreeMap implements Library {
  
   @Override
   public Song songSearch(String songTitle, String artist) {
-       if ((songMap.get(artist + ", " + songTitle).getArtist().equalsIgnoreCase(artist))&&(songMap.get(artist + ", " + songTitle).getSongTitle().equalsIgnoreCase(songTitle))){
-           return getSongFromList(artist + ", " + songTitle);
-       }
+       if(contains2(artist + ", "+ songTitle)==true){
+            if ((songMap.get(artist + ", " + songTitle).getArtist().equalsIgnoreCase(artist))&&(songMap.get(artist + ", " + songTitle).getSongTitle().equalsIgnoreCase(songTitle))){
+                return getSongFromList(artist + ", " + songTitle);
+            }
+        }
        return null;
   }
   @Override
@@ -64,6 +74,33 @@ public class LibraryTreeMap implements Library {
   public boolean contains1(Song song) {
       return songMap.containsKey(song.getId());
   }
+  public boolean contains2(String songID){
+     return songMap.containsKey(songID);
+  }
+@Override
+public String getArtist(Song song) {
+    // TODO Auto-generated method stub
+    return song.getArtist();
+}
+@Override
+public String getSongTitle(Song song) {
+    // TODO Auto-generated method stub
+    return song.getSongTitle();
+}
+@Override
+public int getDurationSeconds(Song song) {
+    // TODO Auto-generated method stub
+    return song.getDurationSeconds();
+}
+@Override
+public int getNumTimesPlayed(Song song) {
+    // TODO Auto-generated method stub
+    return song.getNumTimesPlayed();
+}
+@Override
+public void removeAll(){
+    songMap = new TreeMap<String, Song>();
+}
  
  
  

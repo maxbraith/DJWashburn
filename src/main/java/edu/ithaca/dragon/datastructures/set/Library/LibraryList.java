@@ -105,4 +105,10 @@ public class LibraryList implements Library{
         return shortestSong; //returns song
     }
 
+    @Override
+    public void removeAll() {
+        songList = new ArrayList<>();
+        
+    }
+
 }
