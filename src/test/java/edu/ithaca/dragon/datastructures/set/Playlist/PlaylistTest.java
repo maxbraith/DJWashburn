@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PlaylistTest {
-    //Griffin is implementing this
+    //author Griffin - test playlist implementation
 
     @Test
     public void playlistTest() {

@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 public class LibraryEffeciencyTest {
 
+    //author Griffin- test the implementations of library and how efficient they are
+
     @Test
     public void libraryEffeciency() {
         System.out.println("-------LibraryList-------");

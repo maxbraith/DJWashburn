@@ -2,7 +2,7 @@ package edu.ithaca.dragon.datastructures.set.Song;
 
 public class Song {
 
-     //author Giovanni
+     //author Giovanni - create song object for library, playlist, and collection of playlists to interact with
     
     String artist;
     String songTitle;

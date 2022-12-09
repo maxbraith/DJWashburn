@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SongTest {
-    //Griffin is doing this
+    //author Griffin - test song implementation
 
     @Test
     public void songInitializer() {

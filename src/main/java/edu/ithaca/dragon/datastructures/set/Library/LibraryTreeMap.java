@@ -5,6 +5,9 @@ import java.util.TreeMap;
 import edu.ithaca.dragon.datastructures.set.Song.Song;
 public class LibraryTreeMap implements Library {
   private TreeMap<String, Song> songMap;
+
+  //author Max - implement a Library using a Tree Map
+
   public LibraryTreeMap(){
       songMap = new TreeMap<String, Song>();
   }
